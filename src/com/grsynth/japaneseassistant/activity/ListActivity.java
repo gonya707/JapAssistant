@@ -20,7 +20,7 @@ import com.grsynth.japaneseassistant.utils.JapTextParser;
 
 public class ListActivity extends ActionBarActivity {
 
-	String values[] = {"N5 verbs", "N5 vocab", "N5 kanji"};
+	String values[] = {"N5 verbs", "N5 kanji"}; //he quitado N5 vocab
 	private static final String TAG = "ListActivity"; 
 
 	@Override
@@ -32,7 +32,7 @@ public class ListActivity extends ActionBarActivity {
 		StableArrayAdapter adapter;
 		FileListReader flr;
 		String dump; 
-		JapTextParser jtp;
+		final JapTextParser jtp;
 
 		final ListView listview = (ListView) findViewById(R.id.listView1);
 		final ArrayList<String> list = new ArrayList<String>();
@@ -79,9 +79,9 @@ public class ListActivity extends ActionBarActivity {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-					final String item = (String) parent.getItemAtPosition(position);
-					Toast toast = Toast.makeText(getApplicationContext(), item.toString(), Toast.LENGTH_SHORT);
-					toast.show();
+					Intent toAnotherActivity = new Intent(view.getContext(), ListActivity.class);
+					toAnotherActivity.putExtra("info", jtp.getElement(position));
+					startActivityForResult(toAnotherActivity, 0);
 				}
 			});
 			break;
@@ -104,36 +104,13 @@ public class ListActivity extends ActionBarActivity {
 
 				@Override
 				public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-					final String item = (String) parent.getItemAtPosition(position);
-					Toast toast = Toast.makeText(getApplicationContext(), item.toString(), Toast.LENGTH_SHORT);
-					toast.show();
+					Intent toAnotherActivity = new Intent(view.getContext(), ListActivity.class);
+					toAnotherActivity.putExtra("info", jtp.getElement(position));
+					startActivityForResult(toAnotherActivity, 0);
 				}
 			});
 			break;
 			
-		case "N5 vocab":
-			flr = new FileListReader("lists/vocabN5");
-			dump = flr.readTxt(getApplicationContext());
-			jtp = new JapTextParser(dump);
-			
-			values = jtp.getShowList();
-			for (int i = 0; i < values.length; ++i) {
-				list.add(values[i]);
-			}
-
-			adapter = new StableArrayAdapter(this,	android.R.layout.simple_list_item_1, list);
-			listview.setAdapter(adapter);
-
-			listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-				@Override
-				public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-					final String item = (String) parent.getItemAtPosition(position);
-					Toast toast = Toast.makeText(getApplicationContext(), item.toString(), Toast.LENGTH_SHORT);
-					toast.show();
-				}
-			});
-			break;
 		}
 
 	}

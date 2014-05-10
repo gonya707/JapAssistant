@@ -66,6 +66,12 @@ public class JapTextParser {
 		
 		return res;
 	}
+
+	public String[] getElement(int position) {
+		String l = sourceListed[position];		
+		String res[] = l.split("\\t");
+		return res;
+	}
 	
 	
 	
