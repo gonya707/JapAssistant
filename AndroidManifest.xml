@@ -35,6 +35,10 @@
         <activity android:name="com.grsynth.japaneseassistant.activity.VocabEntryActivity" >
         </activity>
         
+        <activity android:name="com.grsynth.japaneseassistant.activity.KanjiGridActivity" >
+        </activity>
+        
+        
         
     </application>
 

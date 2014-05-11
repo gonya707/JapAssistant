@@ -48,12 +48,11 @@ public class JapTextParser {
 		String line[];
 		String buff;
 		
-		// FIXME untested.
 		if (this.isKanji){
 			for (int i = 0; i < sourceListed.length; i++){
 				buff = sourceListed[i];
 				line = buff.split("\\t");
-				res[i] = line[0]+ " " + line[3];
+				res[i] = line[0];
 			}
 		}
 		else{

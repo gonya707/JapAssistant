@@ -30,7 +30,7 @@ public class VocabEntryActivity extends Activity{
 		tv1.setText(fields[1]);
 		tv2.setText(fields[2]);
 		
-		// Parse params
+		//TODO Parse params
 	}
 
 }

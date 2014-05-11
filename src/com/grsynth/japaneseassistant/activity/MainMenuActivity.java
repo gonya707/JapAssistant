@@ -25,21 +25,23 @@ public class MainMenuActivity extends ActionBarActivity {
 		b3.setOnClickListener(buttonHandler3);
 		b4.setOnClickListener(buttonHandler4);
 		
-		b1.setText("Lists");
+		b1.setText("Vocabulary");
 		b2.setText("Kanji");
+		b3.setText("");
+		b4.setText("");
 	}
 	
 	View.OnClickListener buttonHandler1 = new View.OnClickListener() {
 		public void onClick(View v) {
 			Intent toAnotherActivity = new Intent(v.getContext(), ListActivity.class);
-			toAnotherActivity.putExtra("display", "list");
 			startActivityForResult(toAnotherActivity, 0);
 		}
 	};
 	
 	View.OnClickListener buttonHandler2 = new View.OnClickListener() {
 		public void onClick(View v) {
-			// it was the 2nd button
+			Intent toAnotherActivity = new Intent(v.getContext(), KanjiGridActivity.class);
+			startActivityForResult(toAnotherActivity, 0);
 		}
 	};
 	

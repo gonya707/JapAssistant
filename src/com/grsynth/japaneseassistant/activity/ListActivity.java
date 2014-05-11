@@ -20,17 +20,16 @@ import com.grsynth.japaneseassistant.utils.JapTextParser;
 
 public class ListActivity extends ActionBarActivity {
 
-	String values[] = {"N5 verbs", "N5 kanji"}; //he quitado N5 vocab
+	String values[] = {"N5 verbs", "N5 kanji"};
 	private static final String TAG = "ListActivity"; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
-		
+
 		Log.d(TAG, "Entering onCreate");
 
-		String display = getIntent().getExtras().getString("display");
 		StableArrayAdapter adapter;
 		FileListReader flr;
 		String dump; 
@@ -39,78 +38,28 @@ public class ListActivity extends ActionBarActivity {
 		final ListView listview = (ListView) findViewById(R.id.listView1);
 		final ArrayList<String> list = new ArrayList<String>();
 
-		switch (display){
+		flr = new FileListReader("lists/verbsN5");
+		dump = flr.readTxt(getApplicationContext());
+		jtp = new JapTextParser(dump);
 
-		case "list": 
+		values = jtp.getShowList();
 
-			for (int i = 0; i < values.length; ++i) {
-				list.add(values[i]);
-			}
-
-			adapter = new StableArrayAdapter(this,	android.R.layout.simple_list_item_1, list);
-			listview.setAdapter(adapter);
-
-			listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-				@Override
-				public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-					final String item = (String) parent.getItemAtPosition(position);
-					Intent toAnotherActivity = new Intent(view.getContext(), ListActivity.class);
-					toAnotherActivity.putExtra("display", item);
-					startActivityForResult(toAnotherActivity, 0);
-				}
-			});
-			break;
-
-		case "N5 verbs":
-			flr = new FileListReader("lists/verbsN5");
-			dump = flr.readTxt(getApplicationContext());
-			jtp = new JapTextParser(dump);
-			
-			values = jtp.getShowList();
-
-			for (int i = 0; i < values.length; ++i) {
-				list.add(values[i]);
-			}
-
-			adapter = new StableArrayAdapter(this,	android.R.layout.simple_list_item_1, list);
-			listview.setAdapter(adapter);
-
-			listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-				@Override
-				public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-					Intent toAnotherActivity = new Intent(view.getContext(), VocabEntryActivity.class);
-					toAnotherActivity.putExtra("info", jtp.getElement(position));
-					startActivityForResult(toAnotherActivity, 0);
-				}
-			});
-			break;
-			
-		case "N5 kanji":
-			flr = new FileListReader("lists/kanjiN5");
-			dump = flr.readTxt(getApplicationContext());
-			jtp = new JapTextParser(dump);
-			
-			values = jtp.getShowList();
-
-			for (int i = 0; i < values.length; ++i) {
-				list.add(values[i]);
-			}
-
-			adapter = new StableArrayAdapter(this,	android.R.layout.simple_list_item_1, list);
-			listview.setAdapter(adapter);
-
-			listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-				@Override
-				public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-					Intent toAnotherActivity = new Intent(view.getContext(), KanjiEntryActivity.class);
-					toAnotherActivity.putExtra("info", jtp.getElement(position));
-					startActivityForResult(toAnotherActivity, 0);
-				}
-			});
-			break;
-			
+		for (int i = 0; i < values.length; ++i) {
+			list.add(values[i]);
 		}
+
+		adapter = new StableArrayAdapter(this,	android.R.layout.simple_list_item_1, list);
+		listview.setAdapter(adapter);
+
+		listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+				Intent toAnotherActivity = new Intent(view.getContext(), VocabEntryActivity.class);
+				toAnotherActivity.putExtra("info", jtp.getElement(position));
+				startActivityForResult(toAnotherActivity, 0);
+			}
+		});
+
 
 	}
 
