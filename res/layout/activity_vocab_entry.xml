@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/RelativeLayout1"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    
-    <!-- textviews para todo -->
 
-</LinearLayout>
+    <!-- word  kana  meaning  jlpt  params -->
+
+    <TextView
+        android:id="@+id/word"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/kanji_example"
+        android:textSize="64sp" />
+
+    <!-- <TextView -->
+    <!-- android:id="@+id/params" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_alignParentLeft="true" -->
+    <!-- android:layout_alignParentTop="true" -->
+    <!-- android:text="@string/kanji_example" /> -->
+
+    <TextView
+        android:id="@+id/kana"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/word"
+        android:layout_marginLeft="15dp"
+        android:text="@string/kunyomi_example"
+        android:textSize="28sp" />
+
+    <!-- <TextView -->
+    <!-- android:id="@+id/jlpt" -->
+    <!-- android:layout_width="wrap_content" -->
+    <!-- android:layout_height="wrap_content" -->
+    <!-- android:layout_alignParentLeft="true" -->
+    <!-- android:layout_below="@+id/meaning" -->
+    <!-- android:text="@string/jlpt_example" /> -->
+
+    <TextView
+        android:id="@+id/meaning"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/kana"
+        android:layout_below="@+id/kana"
+        android:text="@string/meaning_example"
+        android:textSize="24sp" />
+
+</RelativeLayout>

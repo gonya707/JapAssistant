@@ -2,20 +2,35 @@ package com.grsynth.japaneseassistant.activity;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
+import android.widget.TextView;
 
 import com.grsynth.japaneseassistant.R;
 
 public class VocabEntryActivity extends Activity{
+	
+	private static final String TAG = "VocabEntryActivity";
+	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_vocab_entry);
+		
+		Log.d(TAG, "Entering onCreate");
 
+		final TextView tv0 = (TextView) findViewById(R.id.word);
+		final TextView tv1 = (TextView) findViewById(R.id.kana);
+		final TextView tv2 = (TextView) findViewById(R.id.meaning);
 		
-		//asignar textviews
+		String info = getIntent().getExtras().getString("info");
+		//"word  kana  meaning  jlpt  params " // separados con tabs
 		
-		//recibir bundle del intent "info". info es un String[] y ahi estan todos los campos por el orden de siempre
+		String fields[] = info.split("\\t");
 		
-		//cambiar textviews
+		tv0.setText(fields[0]);
+		tv1.setText(fields[1]);
+		tv2.setText(fields[2]);
+		
+		// Parse params
 	}
 
 }

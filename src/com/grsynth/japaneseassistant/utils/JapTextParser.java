@@ -53,7 +53,7 @@ public class JapTextParser {
 			for (int i = 0; i < sourceListed.length; i++){
 				buff = sourceListed[i];
 				line = buff.split("\\t");
-				res[i] = line[0]+ "  " + line[1]+ "  " + line[2]+ "  " + line[3];
+				res[i] = line[0]+ " " + line[3];
 			}
 		}
 		else{
@@ -67,10 +67,9 @@ public class JapTextParser {
 		return res;
 	}
 
-	public String[] getElement(int position) {
+	public String getElement(int position) {
 		String l = sourceListed[position];		
-		String res[] = l.split("\\t");
-		return res;
+		return l;
 	}
 	
 	

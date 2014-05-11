@@ -28,7 +28,7 @@
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/kunyomi"
+            android:text="@string/onyomi"
             android:textSize="18sp" />
 
         <TextView
@@ -38,7 +38,7 @@
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/textView1"
             android:paddingLeft="10dp"
-            android:text="@string/kunyomi_example"
+            android:text="@string/onyomi_example"
             android:textSize="18sp" />
 
         <TextView
@@ -49,7 +49,7 @@
             android:layout_alignBottom="@+id/textView2"
             android:layout_toRightOf="@+id/textView2"
             android:paddingLeft="15dp"
-            android:text="@string/onyomi_example"
+            android:text="@string/kunyomi_example"
             android:textSize="18sp" />
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_alignBottom="@+id/textView3"
             android:layout_toRightOf="@+id/textView3"
             android:paddingLeft="15dp"
-            android:text="@string/jlpt_example"
+            android:text="@string/jouyou_example"
             android:textSize="18sp" />
 
         <TextView
@@ -71,7 +71,7 @@
             android:layout_alignBottom="@+id/textView4"
             android:layout_toRightOf="@+id/textView4"
             android:paddingLeft="15dp"
-            android:text="@string/jouyou_example"
+            android:text="@string/jlpt_example"
             android:textSize="18sp" />
 
         <TextView
@@ -80,7 +80,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView1"
             android:layout_below="@+id/textView1"
-            android:text="@string/onyomi"
+            android:text="@string/kunyomi"
             android:textSize="18sp" />
 
         <TextView
@@ -89,7 +89,7 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView2"
             android:layout_below="@+id/onyomi"
-            android:text="@string/jlpt"
+            android:text="@string/jouyou"
             android:textSize="18sp" />
 
         <TextView
@@ -98,8 +98,18 @@
             android:layout_height="wrap_content"
             android:layout_alignLeft="@+id/textView3"
             android:layout_below="@+id/textView3"
-            android:text="@string/jouyou"
+            android:text="@string/jlpt"
             android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/meaning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@+id/textView4"
+            android:layout_below="@+id/jouyou"
+            android:layout_marginTop="18dp"
+            android:text="@string/meaning_example"
+            android:textSize="24sp" />
 
     </RelativeLayout>
 

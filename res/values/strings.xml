@@ -10,8 +10,10 @@
     <string name="kunyomi_example">たつ</string>
     <string name="jlpt_example">-</string>
     <string name="jouyou_example">10</string>
+    <string name="meaning_example">dragon, imperial</string>
     <string name="onyomi">On: </string>
     <string name="kunyomi">Kun: </string>
     <string name="jlpt">JLPT: </string>
     <string name="jouyou">Jouyou: </string>
+    
 </resources>

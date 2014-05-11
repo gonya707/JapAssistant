@@ -8,11 +8,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.grsynth.japaneseassistant.R;
 import com.grsynth.japaneseassistant.utils.FileListReader;
@@ -27,6 +27,8 @@ public class ListActivity extends ActionBarActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_list);
+		
+		Log.d(TAG, "Entering onCreate");
 
 		String display = getIntent().getExtras().getString("display");
 		StableArrayAdapter adapter;
@@ -36,7 +38,6 @@ public class ListActivity extends ActionBarActivity {
 
 		final ListView listview = (ListView) findViewById(R.id.listView1);
 		final ArrayList<String> list = new ArrayList<String>();
-
 
 		switch (display){
 
@@ -76,10 +77,9 @@ public class ListActivity extends ActionBarActivity {
 			listview.setAdapter(adapter);
 
 			listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
 				@Override
 				public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-					Intent toAnotherActivity = new Intent(view.getContext(), ListActivity.class);
+					Intent toAnotherActivity = new Intent(view.getContext(), VocabEntryActivity.class);
 					toAnotherActivity.putExtra("info", jtp.getElement(position));
 					startActivityForResult(toAnotherActivity, 0);
 				}
@@ -101,10 +101,9 @@ public class ListActivity extends ActionBarActivity {
 			listview.setAdapter(adapter);
 
 			listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
 				@Override
 				public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-					Intent toAnotherActivity = new Intent(view.getContext(), ListActivity.class);
+					Intent toAnotherActivity = new Intent(view.getContext(), KanjiEntryActivity.class);
 					toAnotherActivity.putExtra("info", jtp.getElement(position));
 					startActivityForResult(toAnotherActivity, 0);
 				}
