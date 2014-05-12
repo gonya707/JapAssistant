@@ -6,12 +6,6 @@
     android:orientation="vertical"
     tools:context="com.grsynth.japaneseassistant.activity.MainMenuActivity" >
 
-    <TextView
-        android:id="@+id/TV1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/empty" />
-
     <Button
         android:id="@+id/button1"
         android:layout_width="match_parent"
@@ -33,6 +27,12 @@
     <Button
         android:id="@+id/button4"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/empty" />
+
+    <TextView
+        android:id="@+id/tv"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/empty" />
 

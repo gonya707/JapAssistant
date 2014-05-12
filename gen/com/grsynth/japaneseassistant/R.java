@@ -1082,7 +1082,6 @@ containing a value of this type.
     public static final class id {
         public static final int RL1=0x7f050048;
         public static final int RelativeLayout1=0x7f050046;
-        public static final int TV1=0x7f05004a;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1098,10 +1097,10 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int button1=0x7f05004b;
-        public static final int button2=0x7f05004c;
-        public static final int button3=0x7f05004d;
-        public static final int button4=0x7f05004e;
+        public static final int button1=0x7f05004a;
+        public static final int button2=0x7f05004b;
+        public static final int button3=0x7f05004c;
+        public static final int button4=0x7f05004d;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
@@ -1158,6 +1157,7 @@ containing a value of this type.
         public static final int textView4=0x7f050044;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
+        public static final int tv=0x7f05004e;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int withText=0x7f05000c;

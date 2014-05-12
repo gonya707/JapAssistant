@@ -1,15 +1,21 @@
 package com.grsynth.japaneseassistant.Type;
 
-public class Kanji {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Kanji  implements Serializable {
+	private int index;
 	private String kanji;
 	private String onyomi;
 	private String kunyomi;
 	private String meaning;
-	private int jlpt;
-	private int jouyou;
+	private String jlpt;
+	private String jouyou;
 	private String params;
+	private boolean open;
+	private int score;
 
-	public Kanji(String kanji, String onyomi, String kunyomi, String meaning, int jouyou, String params, int jlpt) {
+	public Kanji(String kanji, String onyomi, String kunyomi, String meaning, String jouyou, String jlpt, String params) {
 		super();
 		this.kanji = kanji;
 		this.onyomi = onyomi;
@@ -20,10 +26,36 @@ public class Kanji {
 		this.params = params;
 	}
 	
+	public Kanji(String kanjiString, int i) {
+		super();
+		
+		String a[] = kanjiString.split("\\t");
+		
+		this.kanji = a[0];
+		this.onyomi = a[1];
+		this.kunyomi = a[2];
+		this.meaning = a[3];
+		this.jlpt = a[5];
+		this.jouyou = a[4];
+		this.params = a[6];
+		
+		this.open = false;
+		this.score = 0;
+		this.index = i;
+	}
+	
 	// cosas >_<
 
 	public String getKanji() {
 		return kanji;
+	}
+
+	public int getIndex() {
+		return index;
+	}
+
+	public void setIndex(int index) {
+		this.index = index;
 	}
 
 	public void setKanji(String kanji) {
@@ -54,19 +86,19 @@ public class Kanji {
 		this.meaning = meaning;
 	}
 
-	public int getJlpt() {
+	public String getJlpt() {
 		return jlpt;
 	}
 
-	public void setJlpt(int jlpt) {
+	public void setJlpt(String jlpt) {
 		this.jlpt = jlpt;
 	}
 
-	public int getJouyou() {
+	public String getJouyou() {
 		return jouyou;
 	}
 
-	public void setJouyou(int jouyou) {
+	public void setJouyou(String jouyou) {
 		this.jouyou = jouyou;
 	}
 
@@ -77,7 +109,23 @@ public class Kanji {
 	public void setParams(String params) {
 		this.params = params;
 	}
-
 	
+	
+	public boolean isOpen() {
+		return open;
+	}
+
+	public void setOpen(boolean open) {
+		this.open = open;
+	}
+
+	public int getScore() {
+		return score;
+	}
+
+	public void setScore(int score) {
+		this.score = score;
+	}
+
 
 }

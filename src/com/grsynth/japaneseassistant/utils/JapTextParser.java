@@ -3,32 +3,32 @@ package com.grsynth.japaneseassistant.utils;
 import android.util.Log;
 
 public class JapTextParser {
-	
+
 	/*TODO clase que lea cada linea de la string resultante de leer los archivos de assets
 	 tiene que discernir si eran: 
 	         kanji	onyomi	kunyomi	meaning	jlpt	jouyou	params
 			o bien
 	         word  kana  meaning  jlpt  params 
 	 y estructurarlos en un array de Kanji o Vocab segun proceda
-	         
-	         
-	         */
+
+
+	 */
 	private static final String TAG = "JapTextParser"; 
-	
+
 	private String sourceListed[];
-	boolean isKanji = false;
+	public boolean isKanji = false;
 
 	public JapTextParser(String source) {
 		super();
-		
+
 		sourceListed = source.split("\\r?\\n");
 		isKanjiList(sourceListed[0]);
 	}
-	
+
 	private void isKanjiList(String sl){
 		String line[];
 		line = sl.split("\\t");
-		
+
 		if(line.length == 7){
 			isKanji = true;
 		}
@@ -36,18 +36,18 @@ public class JapTextParser {
 
 	public String[] getShowList() {
 		// TODO crea un string con los elementos para mostrar en lista"
-		//    kanji - kun - on - meaning
+		//    kanji 
 		//    word - kana - meaning
-		
-		 Log.d(TAG, "Entering getShowList");
-		 Log.d(TAG, "sourceListed.length = " + sourceListed.length);
-		
+
+		Log.d(TAG, "Entering getShowList");
+		Log.d(TAG, "sourceListed.length = " + sourceListed.length);
+
 		String res[];
 		res = new String[sourceListed.length];
-		
+
 		String line[];
 		String buff;
-		
+
 		if (this.isKanji){
 			for (int i = 0; i < sourceListed.length; i++){
 				buff = sourceListed[i];
@@ -62,16 +62,20 @@ public class JapTextParser {
 				res[i] = line[0]+ "  " + line[1] + "  "  + line[2];
 			}
 		}
-		
+
 		return res;
+	}
+
+	public String[] getCompleteList(){
+		return sourceListed;
 	}
 
 	public String getElement(int position) {
 		String l = sourceListed[position];		
 		return l;
 	}
-	
-	
-	
-	
+
+
+
+
 }

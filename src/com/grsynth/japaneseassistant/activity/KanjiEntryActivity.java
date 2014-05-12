@@ -6,10 +6,11 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.grsynth.japaneseassistant.R;
+import com.grsynth.japaneseassistant.Type.Kanji;
 
 public class KanjiEntryActivity extends Activity{
 	
-	private static final String TAG = "KanjibEntryActivity"; 
+	private static final String TAG = "KanjiEntryActivity"; 
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -24,17 +25,15 @@ public class KanjiEntryActivity extends Activity{
 		final TextView tv4 = (TextView) findViewById(R.id.jouyou);
 		final TextView tv5 = (TextView) findViewById(R.id.meaning);
 		
-		String info = getIntent().getExtras().getString("info");
+		Kanji info = (Kanji) getIntent().getExtras().getSerializable("info");
 		//"kanji	onyomi	kunyomi	meaning	jouyou	jlpt	params" // separados con tabs
 		
-		String fields[] = info.split("\\t");
-		
-		tv0.setText(fields[0]);
-		tv1.setText(fields[1]);
-		tv2.setText(fields[2]);
-		tv3.setText(fields[5]);
-		tv4.setText(fields[4]);
-		tv5.setText(fields[3]);
+		tv0.setText(info.getKanji());
+		tv1.setText(info.getKunyomi());
+		tv2.setText(info.getOnyomi());
+		tv3.setText(info.getJlpt());
+		tv4.setText(info.getJouyou());
+		tv5.setText(info.getMeaning());
 
 		
 		// TODO parse params

@@ -1,0 +1,3 @@
+Delete al the lines starting with.... for RAW kanji files
+
+^((?:kun\sreadings|ON\sreadings|Meaning\:|Data|Radical\:|S\s\&|JLPT\slevel|Kanji\sand|Nelson|Halp|Heisi|\(Gakken\)|Hen|SKIP|4\-Corner|Unicode|Double\-byte|Shift|Frequency\sof\suse|EUC\-JP|Kuten|Stroke\scount)).*\s*

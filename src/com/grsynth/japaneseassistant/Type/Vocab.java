@@ -1,13 +1,16 @@
 package com.grsynth.japaneseassistant.Type;
 
-public class Vocab {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Vocab  implements Serializable {
 	private String word;
 	private String kana;
 	private String meaning;
-	private int jlpt;
+	private String jlpt;
 	private String params;
 	
-	public Vocab(String word, String kana, String meaning, int jlpt, String params) {
+	public Vocab(String word, String kana, String meaning, String jlpt, String params) {
 		super();
 		this.word = word;
 		this.kana = kana;
@@ -40,11 +43,11 @@ public class Vocab {
 		this.meaning = meaning;
 	}
 
-	public int getJlpt() {
+	public String getJlpt() {
 		return jlpt;
 	}
 
-	public void setJlpt(int jlpt) {
+	public void setJlpt(String jlpt) {
 		this.jlpt = jlpt;
 	}
 
