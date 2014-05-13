@@ -20,7 +20,6 @@ import android.widget.Toast;
 
 import com.grsynth.japaneseassistant.R;
 import com.grsynth.japaneseassistant.Type.Kanji;
-import com.grsynth.japaneseassistant.utils.NoDefaultSpinner;
 public class KanjiGridActivity extends Activity {
 
 	private static final String TAG = "KanjiGridActivity"; 
@@ -38,12 +37,12 @@ public class KanjiGridActivity extends Activity {
 		FileInputStream fin;
 		final List<Kanji> kanjiList = new ArrayList<Kanji>();
 		Kanji k;
-		String ka[] = new String[100];
+		String ka[] = new String[2217];
 
 		try{
 			fin = openFileInput("kanji");
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			for(int i = 0; i < 100; i++){ //hacerlo hasta EOF, el fichero escrito esta entero
+			for(int i = 0; i < 2217; i++){ //hacerlo hasta EOF, el fichero escrito esta entero
 				k = (Kanji) ois.readObject();
 				kanjiList.add(k);
 				ka[i] = k.getKanji();

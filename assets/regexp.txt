@@ -1,3 +1,31 @@
-Delete al the lines starting with.... for RAW kanji files
+1) Recopilar kanjis desde las listas con Macro 4 en el kanji y macro 5 en cada kanji description. El primero de todos hay que copiar a mano
 
-^((?:kun\sreadings|ON\sreadings|Meaning\:|Data|Radical\:|S\s\&|JLPT\slevel|Kanji\sand|Nelson|Halp|Heisi|\(Gakken\)|Hen|SKIP|4\-Corner|Unicode|Double\-byte|Shift|Frequency\sof\suse|EUC\-JP|Kuten|Stroke\scount)).*\s*
+2) pegar en un archivo de texto
+
+3) pasar estas regex
+
+	a) ^((?:kun\sreadings|ON\sreadings|Meaning\:|Data|S\s\&|JLPT\slevel|Kanji\sand|Nelson|Halp|Heisi|\(Gakken\)|Hen|SKIP|4\-Corner|Unicode|Double\-byte|Shift|Frequency\sof\suse|EUC\-JP|Kuten)).*\s*
+
+	replace for:
+
+		(nada, vacio)
+
+	b) (Stroke count: |Jouyou grade: |JLPT N level: N|Kanji information for the kanji: |Radical: | #[0-9]+)
+
+	replace for:
+
+		(nada, vacio)
+
+	c) \n\n
+
+	replace for:
+
+		\n
+
+4) usar macro 3 para separar con bloques. A veces hay que añadir un - cuando no hay lecturas
+
+5) sustituir todos los \n\n por QWERTYUIOP
+
+6) sustituir todos los \n por \t
+
+7) sustituir todos los QWERTYUIOP por \n
