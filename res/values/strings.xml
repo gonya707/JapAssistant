@@ -4,7 +4,7 @@
     <string name="app_name">Japanese Assistant</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="empty">EMPTY</string>
+    <string name="empty"></string>
     <string name="kanji_example">龍</string>
     <string name="onyomi_example">リュゥ, リョゥ, ロゥ</string>
     <string name="kunyomi_example">たつ</string>
@@ -15,5 +15,58 @@
     <string name="kunyomi">Kun: </string>
     <string name="jlpt">JLPT: </string>
     <string name="jouyou">Jouyou: </string>
-    
+    <string name="filter">Filter </string>
+    <string name="filter_prompt">Field</string>
+
+    <string-array name="filter_1">
+        <item>Select filter</item>
+        <item>Number of strokes</item>
+        <item>JLPT level</item>
+        <item>Jouyou level</item>
+    </string-array>
+    <string-array name="filter_stroke">
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+    </string-array>
+    <string-array name="jlpt_level">
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>-</item>
+    </string-array>
+    <string-array name="jouyou_level">
+        <item></item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>-</item>
+    </string-array>
+    <string-array name="empty_list">
+        <item></item>
+    </string-array>
+
 </resources>

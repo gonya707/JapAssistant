@@ -18,6 +18,7 @@ import android.widget.TextView;
 
 import com.grsynth.japaneseassistant.R;
 import com.grsynth.japaneseassistant.Type.Kanji;
+import com.grsynth.japaneseassistant.Type.ScoreKanji;
 import com.grsynth.japaneseassistant.utils.FileListReader;
 import com.grsynth.japaneseassistant.utils.JapTextParser;
 
@@ -81,7 +82,7 @@ public class MainMenuActivity extends ActionBarActivity {
 				ois.close();
 				
 				tv.append(" SI");
-				tv.append("\nVamos a intentar leer el archivo kanji");
+				tv.append("\nVamos a intentar 10 kanjis");
 				
 				fin = openFileInput("kanji");
 				ois = new ObjectInputStream(fin);
@@ -129,6 +130,16 @@ public class MainMenuActivity extends ActionBarActivity {
 					}
 					fos.close();
 					tv.append("\nArchivo Kanji cerrado.");
+					
+					tv.append("\nCreando scoreKanji...");
+					fos = openFileOutput("scoreKanji", Context.MODE_PRIVATE);
+					oos = new ObjectOutputStream(fos);
+					ScoreKanji sk = new ScoreKanji(0, 0, 0, 0);
+					for(int i = 0; i < entries.length; i++){
+						oos.writeObject(sk);
+					}
+					fos.close();
+					tv.append(" hecho");
 
 					// clear entries... kind of
 					entries = null;
