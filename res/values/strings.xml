@@ -31,7 +31,7 @@
     <string name="filter_prompt">Field</string>
 
     <string-array name="filter_1">
-        <item>Select filter</item>
+        <item>Clear filters</item>
         <item>Number of strokes</item>
         <item>JLPT level</item>
         <item>Jouyou level</item>

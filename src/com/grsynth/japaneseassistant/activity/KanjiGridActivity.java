@@ -57,23 +57,31 @@ public class KanjiGridActivity extends Activity {
 		} 
 
 		gridView = (GridView) findViewById(R.id.gridView1);
-		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ka);
-		gridView.setAdapter(adapter);
 
-		gridView.setOnItemClickListener(new OnItemClickListener() {
-			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-				Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
-				toAnotherActivity.putExtra("info", kanjiList.get(position));
-				toAnotherActivity.putExtra("position", position);
-				toAnotherActivity.putExtra("list", kanjiList);
-				startActivityForResult(toAnotherActivity, 0);
-			}
-		});
+		//show all
+		//adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ka);
+		//gridView.setAdapter(adapter);
 
-		// SPINNER HANDLES
+
+
+		//		gridView.setOnItemClickListener(new OnItemClickListener() {
+		//			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+		//				Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
+		//				toAnotherActivity.putExtra("info", kanjiList.get(position));
+		//				toAnotherActivity.putExtra("position", position);
+		//				toAnotherActivity.putExtra("list", kanjiList);
+		//				startActivityForResult(toAnotherActivity, 0);
+		//			}
+		//		});
+
+
 
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
 		spinner2 = (Spinner) findViewById(R.id.spinner2);
+
+		showFirstBoot();
+
+		// SPINNER HANDLES
 
 		spinner1.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
 			public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
@@ -111,6 +119,49 @@ public class KanjiGridActivity extends Activity {
 
 	}
 
+	private void showFirstBoot(){ // set the inicial grid adapter to JLPT N5 to avoid overcharge
+
+		spinner1.setSelection(2); //jltp
+		spinner2.setSelection(5); //N5
+		
+		String ka[] = new String[2217]; 
+		int filter;
+		int compareTo = 5;
+		Kanji kanjiBuffer;
+		int j = 0;
+		final ArrayList<Kanji> kanjiList2 = new ArrayList<Kanji>();
+
+		for (int i = 0; i < 2217; i++){
+			kanjiBuffer = kanjiList.get(i);
+			filter = kanjiBuffer.getIntJlpt();
+			if (filter == compareTo){
+				ka[j] = kanjiBuffer.getKanji();
+				kanjiList2.add(kanjiBuffer);
+				j++;
+			}
+		}
+
+		//adapter.clear();
+		try {
+			final String[] grp = Arrays.copyOfRange(ka, 0, j-1);
+			adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, grp);
+			gridView.setAdapter(adapter);
+
+			gridView.setOnItemClickListener(new OnItemClickListener() {
+				public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+					Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
+					toAnotherActivity.putExtra("info", kanjiList2.get(position));
+					toAnotherActivity.putExtra("position", position);
+					toAnotherActivity.putExtra("list", kanjiList2);
+					startActivityForResult(toAnotherActivity, 0);
+				}
+			});
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
 	View.OnClickListener buttonHandler1 = new View.OnClickListener() {
 		public void onClick(View v) {
 			//Toast.makeText(getApplicationContext(), "Aplicar filtro: " + spinner1.getSelectedItemPosition() +", " + spinner2.getSelectedItemPosition() ,Toast.LENGTH_SHORT).show();
@@ -121,8 +172,7 @@ public class KanjiGridActivity extends Activity {
 			Kanji kanjiBuffer;
 			int j = 0;
 			final ArrayList<Kanji> kanjiList2 = new ArrayList<Kanji>();
-
-			if (spinner1.getSelectedItemPosition() != 0 && spinner2.getSelectedItemPosition() !=0){
+			if (spinner2.getSelectedItemPosition() !=0){
 				//rellenar ka con los elementos filtrados de kanjiList
 
 				switch (spinner1.getSelectedItemPosition()){
@@ -140,7 +190,7 @@ public class KanjiGridActivity extends Activity {
 						}
 					}
 					break;
-					
+
 				case 2: // jlpt
 
 					compareTo = spinner2.getSelectedItemPosition();
@@ -155,7 +205,7 @@ public class KanjiGridActivity extends Activity {
 						}
 					}
 					break;
-					
+
 				case 3: // jouyou FIXME no funciono
 
 					compareTo = spinner2.getSelectedItemPosition();
@@ -171,6 +221,13 @@ public class KanjiGridActivity extends Activity {
 					}
 					break;
 				}
+			}else if(spinner1.getSelectedItemPosition() == 0){
+				for (int i = 0; i < 2217; i++){
+					kanjiBuffer = kanjiList.get(i);
+					ka[j] = kanjiBuffer.getKanji();
+					kanjiList2.add(kanjiBuffer);
+					j++;
+				}
 			}
 
 			//adapter.clear();
@@ -178,7 +235,7 @@ public class KanjiGridActivity extends Activity {
 				final String[] grp = Arrays.copyOfRange(ka, 0, j-1);
 				adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, grp);
 				gridView.setAdapter(adapter);
-				
+
 				gridView.setOnItemClickListener(new OnItemClickListener() {
 					public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 						Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
@@ -188,13 +245,13 @@ public class KanjiGridActivity extends Activity {
 						startActivityForResult(toAnotherActivity, 0);
 					}
 				});
-				
-				
+
+
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
-		}
+		};
 	};
-
 }
+
 
