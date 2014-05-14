@@ -2,8 +2,6 @@ package com.grsynth.japaneseassistant.Type;
 
 import java.io.Serializable;
 
-import android.os.Parcel;
-
 @SuppressWarnings("serial")
 public class Kanji implements Serializable{
 	private String kanji;
@@ -138,5 +136,7 @@ public class Kanji implements Serializable{
 	public int getIntJouyou() {
 		return Integer.parseInt(this.jouyou);
 	}
+
+
 
 }

@@ -1,5 +1,7 @@
 package com.grsynth.japaneseassistant.activity;
 
+import java.util.ArrayList;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,8 +17,9 @@ public class KanjiEntryActivity extends Activity{
 	
 	private static final String TAG = "KanjiEntryActivity"; 
 	int pos;
-	String lista[];
+	ArrayList<Kanji> kanjiList;
 	Intent in;
+	
 	
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -45,8 +48,8 @@ public class KanjiEntryActivity extends Activity{
 		tv7.setText(info.getMeaning());
 		
 		
-		//pos = getIntent().getExtras().getInt("position");
-		//lista = getIntent().getExtras().getStringArray("list");
+		pos = getIntent().getExtras().getInt("position");
+		kanjiList = (ArrayList<Kanji>) getIntent().getExtras().getSerializable("list");
 		
 		final Button b1 = (Button) findViewById(R.id.next);
 		final Button b2 = (Button) findViewById(R.id.previous);
@@ -58,26 +61,28 @@ public class KanjiEntryActivity extends Activity{
 	View.OnClickListener buttonHandler1 = new View.OnClickListener() {
 		public void onClick(View v) {
 			//TODO
-			//if (pos + 1 < lista.length){
+			if (pos + 1 < kanjiList.size()){
 				in = new Intent(v.getContext(), KanjiEntryActivity.class);
-//				in.putExtra("info", lista[pos + 1]);
-//				in.putExtra("position", pos + 1);
-//				in.putExtra("list", lista);
-//				startActivityForResult(in, 0);
-			//}
+				in.putExtra("info", kanjiList.get(pos + 1));
+				in.putExtra("position", pos + 1);
+				in.putExtra("list", kanjiList);
+				finish();
+				startActivityForResult(in, 0);
+			}
 		}
 	};
 	
 	View.OnClickListener buttonHandler2 = new View.OnClickListener() {
 		public void onClick(View v) {
 			//TODO
-			//if (pos > 0){
+			if (pos > 0){
 				in = new Intent(v.getContext(), KanjiEntryActivity.class);
-//				in.putExtra("info", lista[pos - 1]);
-//				in.putExtra("position", pos + 1);
-//				in.putExtra("list", lista);
-//				startActivityForResult(in, 0);
-			//}
+				in.putExtra("info", kanjiList.get(pos - 1));
+				in.putExtra("position", pos + 1);
+				in.putExtra("list", kanjiList);
+				finish();
+				startActivityForResult(in, 0);
+			}
 		}
 	};
 

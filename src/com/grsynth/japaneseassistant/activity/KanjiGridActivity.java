@@ -4,7 +4,6 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -17,7 +16,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.GridView;
 import android.widget.Spinner;
-import android.widget.Toast;
 
 import com.grsynth.japaneseassistant.R;
 import com.grsynth.japaneseassistant.Type.Kanji;
@@ -60,19 +58,17 @@ public class KanjiGridActivity extends Activity {
 
 		gridView = (GridView) findViewById(R.id.gridView1);
 		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ka);
-
 		gridView.setAdapter(adapter);
 
 		gridView.setOnItemClickListener(new OnItemClickListener() {
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 				Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
 				toAnotherActivity.putExtra("info", kanjiList.get(position));
-				//toAnotherActivity.putExtra("position", position);
-				//toAnotherActivity.putExtra("list", kanjiList);
+				toAnotherActivity.putExtra("position", position);
+				toAnotherActivity.putExtra("list", kanjiList);
 				startActivityForResult(toAnotherActivity, 0);
 			}
 		});
-
 
 		// SPINNER HANDLES
 
@@ -179,7 +175,7 @@ public class KanjiGridActivity extends Activity {
 
 			//adapter.clear();
 			try {
-				String[] grp = Arrays.copyOfRange(ka, 0, j-1);
+				final String[] grp = Arrays.copyOfRange(ka, 0, j-1);
 				adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, grp);
 				gridView.setAdapter(adapter);
 				
@@ -187,11 +183,12 @@ public class KanjiGridActivity extends Activity {
 					public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 						Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
 						toAnotherActivity.putExtra("info", kanjiList2.get(position));
-						//toAnotherActivity.putExtra("position", position);
-						//toAnotherActivity.putExtra("list", kanjiList);
+						toAnotherActivity.putExtra("position", position);
+						toAnotherActivity.putExtra("list", kanjiList2);
 						startActivityForResult(toAnotherActivity, 0);
 					}
 				});
+				
 				
 			} catch (Exception e) {
 				e.printStackTrace();

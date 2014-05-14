@@ -101,7 +101,8 @@
 駅	エキ	-	station	14	馬	3	5
 高	コウ	たか、たか.い、たか.まる、たか.める、だか	tall, high, expensive	10	高	2	5
 魚	ギョ	うお、さかな、ざかな	fish	11	魚	2	5
-不民	ミン	たみ	people, nation, subjects	5	一	4	4
+不	フ、ブ	-	negative, non-, bad, ugly, clumsy	4	一	4	4	
+民	ミン	たみ	people, nation, subjects	5	一	4	4
 正	セイ、ショウ	ただ.しい、ただ.す、まさ、まさ.に	correct, justice, righteous, 10**40	5	一	1	4
 画	ガ、カク、エ、カイ	えが.く、かく.する、はかりごと	brush-stroke, picture	8	一	2	4
 昼	チュウ	ひる	daytime, noon	9	一	2	4
