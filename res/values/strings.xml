@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+
+    
     <string name="app_name">Japanese Assistant</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="empty"></string>
-    <string name="kanji_example">龍</string>
-    <string name="onyomi_example">リュゥ, リョゥ, ロゥ</string>
-    <string name="kunyomi_example">たつ</string>
-    <string name="jlpt_example">-</string>
-    <string name="jouyou_example">10</string>
-    <string name="meaning_example">dragon, imperial</string>
+    
+    <string name="kanji_example">勉</string>
+    <string name="onyomi_example">ベン</string>
+    <string name="kunyomi_example">つと.める</string>
+    <string name="meaning_example">exertion</string>
+    <string name="strokes_example">10</string>
+    <string name="radical_example">丿</string>
+    <string name="jouyou_example">3</string>
+    <string name="jlpt_example">4</string>
+    
     <string name="onyomi">On: </string>
     <string name="kunyomi">Kun: </string>
     <string name="jlpt">JLPT: </string>
     <string name="jouyou">Jouyou: </string>
+    <string name="number_of_strokes">Strokes: </string>
+    <string name="radical">Radical: </string>
+
+    <string name="next">次 \nNext</string>
+    <string name="previous">前 Previous</string>
+    
     <string name="filter">Filter </string>
     <string name="filter_prompt">Field</string>
 

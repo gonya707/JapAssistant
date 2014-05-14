@@ -21,20 +21,21 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:layout_below="@+id/kanji"
-        android:paddingLeft="15dp" >
+        android:layout_below="@+id/kanji" >
 
         <TextView
             android:id="@+id/textView1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/onyomi"
+            android:paddingLeft="15dp"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/kunyomi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_toRightOf="@+id/textView1"
             android:paddingLeft="10dp"
@@ -47,24 +48,26 @@
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/textView2"
             android:layout_alignBottom="@+id/textView2"
+            android:layout_alignParentRight="true"
             android:layout_toRightOf="@+id/textView2"
             android:paddingLeft="15dp"
             android:text="@string/kunyomi_example"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/jlpt"
+            android:id="@+id/jouyou"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/textView3"
             android:layout_alignBottom="@+id/textView3"
+            android:layout_alignParentRight="true"
             android:layout_toRightOf="@+id/textView3"
             android:paddingLeft="15dp"
             android:text="@string/jouyou_example"
             android:textSize="18sp" />
 
         <TextView
-            android:id="@+id/jouyou"
+            android:id="@+id/jlpt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBaseline="@+id/textView4"
@@ -74,12 +77,65 @@
             android:text="@string/jlpt_example"
             android:textSize="18sp" />
 
+        <Button
+            android:id="@+id/next"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:text="@string/next" />
+
+        <Button
+            android:id="@+id/previous"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:text="@string/previous" />
+
+        <TextView
+            android:id="@+id/radical"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/strokes"
+            android:text="@string/radical"
+            android:paddingTop="4dp"
+            android:paddingLeft="15dp"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/strokes"
+            android:layout_alignBottom="@+id/strokes"
+            android:layout_alignParentRight="true"
+            android:layout_toRightOf="@+id/strokes"
+            android:paddingLeft="15dp"
+            android:text="@string/strokes_example"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/radical"
+            android:layout_alignBottom="@+id/radical"
+            android:layout_alignLeft="@+id/textView5"
+            android:layout_alignParentRight="true"
+            android:paddingLeft="15dp"
+            android:text="@string/radical_example"
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView1"
-            android:layout_below="@+id/textView1"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/kunyomi"
+			android:paddingLeft="15dp"
+			android:paddingTop="4dp"
             android:text="@string/kunyomi"
             android:textSize="18sp" />
 
@@ -87,29 +143,47 @@
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView2"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/onyomi"
+            android:paddingLeft="15dp"
             android:text="@string/jouyou"
+            android:paddingTop="4dp"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView3"
+            android:layout_alignParentLeft="true"
             android:layout_below="@+id/textView3"
+            android:paddingLeft="15dp"
             android:text="@string/jlpt"
+            android:paddingTop="4dp"
             android:textSize="18sp" />
 
         <TextView
             android:id="@+id/meaning"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignLeft="@+id/textView4"
-            android:layout_below="@+id/jouyou"
-            android:layout_marginTop="18dp"
+            android:layout_above="@+id/button1"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/radical"
+            android:paddingTop="4dp"
+            android:paddingLeft="25dp"
             android:text="@string/meaning_example"
             android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/strokes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@+id/jlpt"
+            android:paddingLeft="15dp"
+            android:paddingTop="4dp"
+            android:text="@string/number_of_strokes"
+            android:textSize="18sp" />
 
     </RelativeLayout>
 

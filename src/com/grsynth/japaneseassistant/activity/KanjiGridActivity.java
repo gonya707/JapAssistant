@@ -35,7 +35,7 @@ public class KanjiGridActivity extends Activity {
 
 		// FILE READING AND DUMPING
 		FileInputStream fin;
-		final List<Kanji> kanjiList = new ArrayList<Kanji>();
+		final ArrayList<Kanji> kanjiList = new ArrayList<Kanji>();
 		Kanji k;
 		String ka[] = new String[2217];
 
@@ -62,6 +62,8 @@ public class KanjiGridActivity extends Activity {
 			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 				Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
 				toAnotherActivity.putExtra("info", kanjiList.get(position));
+				//toAnotherActivity.putExtra("position", position);
+				//toAnotherActivity.putExtra("list", kanjiList);
 				startActivityForResult(toAnotherActivity, 0);
 			}
 		});

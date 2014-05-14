@@ -2,20 +2,22 @@ package com.grsynth.japaneseassistant.Type;
 
 import java.io.Serializable;
 
+import android.os.Parcel;
+
 @SuppressWarnings("serial")
-public class Kanji  implements Serializable {
-	private int index;
+public class Kanji implements Serializable{
 	private String kanji;
 	private String onyomi;
 	private String kunyomi;
 	private String meaning;
 	private String jlpt;
 	private String jouyou;
-	private String params;
-	private boolean open;
-	private int score;
+	private String strokes;
+	private String radical;
+	private int index;
 
-	public Kanji(String kanji, String onyomi, String kunyomi, String meaning, String jouyou, String jlpt, String params) {
+
+	public Kanji(String kanji, String onyomi, String kunyomi, String meaning, String jouyou, String jlpt, int index, String strokes, String radical) {
 		super();
 		this.kanji = kanji;
 		this.onyomi = onyomi;
@@ -23,10 +25,14 @@ public class Kanji  implements Serializable {
 		this.meaning = meaning;
 		this.jlpt = jlpt;
 		this.jouyou = jouyou;
-		this.params = params;
+		this.index = index;
+		this.strokes = strokes;
+		this.radical = radical;
+
 	}
 	
-	public Kanji(String kanjiString, int i) {
+
+	public Kanji(String kanjiString, int index) {
 		super();
 		
 		String a[] = kanjiString.split("\\t");
@@ -35,19 +41,29 @@ public class Kanji  implements Serializable {
 		this.onyomi = a[1];
 		this.kunyomi = a[2];
 		this.meaning = a[3];
-		this.jlpt = a[5];
-		this.jouyou = a[4];
-		this.params = a[6];
+		this.strokes = a[4];
+		this.radical = a[5];
+		this.jouyou = a[6];
+		this.jlpt = a[7];
 		
-		this.open = false;
-		this.score = 0;
-		this.index = i;
+		this.index = index;
+
 	}
 	
-	// cosas >_<
+	public String getStrokes() {
+		return strokes;
+	}
 
-	public String getKanji() {
-		return kanji;
+	public void setStrokes(String strokes) {
+		this.strokes = strokes;
+	}
+
+	public String getRadical() {
+		return radical;
+	}
+
+	public void setRadical(String radical) {
+		this.radical = radical;
 	}
 
 	public int getIndex() {
@@ -56,6 +72,13 @@ public class Kanji  implements Serializable {
 
 	public void setIndex(int index) {
 		this.index = index;
+	}
+
+	
+	// cosas >_<
+
+	public String getKanji() {
+		return kanji;
 	}
 
 	public void setKanji(String kanji) {
@@ -102,30 +125,6 @@ public class Kanji  implements Serializable {
 		this.jouyou = jouyou;
 	}
 
-	public String getParams() {
-		return params;
-	}
-
-	public void setParams(String params) {
-		this.params = params;
-	}
-	
-	
-	public boolean isOpen() {
-		return open;
-	}
-
-	public void setOpen(boolean open) {
-		this.open = open;
-	}
-
-	public int getScore() {
-		return score;
-	}
-
-	public void setScore(int score) {
-		this.score = score;
-	}
 
 
 }

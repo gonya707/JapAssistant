@@ -3,7 +3,7 @@
     package="com.grsynth.japaneseassistant"
     android:versionCode="1"
     android:versionName="1.0" >
-    
+
     <uses-sdk
         android:minSdkVersion="19"
         android:targetSdkVersion="19" />
@@ -12,10 +12,9 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
+        android:theme="@style/Theme.AppCompat" >
 
-		android:theme="@style/Theme.AppCompat" > 
-		
-        <!-- 		android:theme="@style/AppBaseTheme" -->
+        <!-- android:theme="@style/AppBaseTheme" -->
         <activity
             android:name="com.grsynth.japaneseassistant.activity.MainMenuActivity"
             android:label="@string/app_name" >
@@ -25,21 +24,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
         <activity android:name="com.grsynth.japaneseassistant.activity.ListActivity" >
         </activity>
-        
-        <activity android:name="com.grsynth.japaneseassistant.activity.KanjiEntryActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.KanjiEntryActivity"
+             >
         </activity>
-        
         <activity android:name="com.grsynth.japaneseassistant.activity.VocabEntryActivity" >
         </activity>
-        
         <activity android:name="com.grsynth.japaneseassistant.activity.KanjiGridActivity" >
         </activity>
-        
-        
-        
     </application>
 
 </manifest>
