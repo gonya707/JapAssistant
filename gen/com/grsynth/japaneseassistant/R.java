@@ -1087,7 +1087,7 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020057;
     }
     public static final class id {
-        public static final int RL1=0x7f050051;
+        public static final int RL1=0x7f050050;
         public static final int RelativeLayout1=0x7f050057;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
@@ -1104,8 +1104,8 @@ containing a value of this type.
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
         public static final int beginning=0x7f050011;
-        public static final int button=0x7f05004f;
-        public static final int button1=0x7f05004c;
+        public static final int button=0x7f05004e;
+        public static final int button1=0x7f050052;
         public static final int button2=0x7f050053;
         public static final int button3=0x7f050054;
         public static final int button4=0x7f050055;
@@ -1119,7 +1119,7 @@ containing a value of this type.
         public static final int end=0x7f050013;
         public static final int expand_activities_button=0x7f050026;
         public static final int expanded_menu=0x7f05002c;
-        public static final int gridView1=0x7f050050;
+        public static final int gridView1=0x7f05004f;
         public static final int home=0x7f050014;
         public static final int homeAsUp=0x7f050005;
         public static final int icon=0x7f05002a;
@@ -1131,7 +1131,7 @@ containing a value of this type.
         public static final int kanji=0x7f05003c;
         public static final int kunyomi=0x7f05003e;
         public static final int listMode=0x7f050001;
-        public static final int listView1=0x7f050052;
+        public static final int listView1=0x7f050051;
         public static final int list_item=0x7f050029;
         public static final int meaning=0x7f05004b;
         public static final int middle=0x7f050012;
@@ -1159,8 +1159,8 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int spinner1=0x7f05004d;
-        public static final int spinner2=0x7f05004e;
+        public static final int spinner1=0x7f05004c;
+        public static final int spinner2=0x7f05004d;
         public static final int split_action_bar=0x7f05001e;
         public static final int strokes=0x7f050048;
         public static final int submit_area=0x7f050039;

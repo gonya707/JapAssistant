@@ -70,7 +70,6 @@ public class MainMenuActivity extends ActionBarActivity {
 			// BLOQUE LECTURA
 			FileInputStream fin;
 			
-			// DEBUG ///////////////////////////////////////////////////////////////////////////////
 			tv.setText("Entrando a onClick");
 
 			try {
@@ -91,7 +90,6 @@ public class MainMenuActivity extends ActionBarActivity {
 					k1 = (Kanji) ois.readObject();
 					tv.append("\nLeido: " + k1.getKanji());
 				}
-				// end ///////////////////////////////////////////////////////////////////////////////
 			} catch (FileNotFoundException e) {
 				
 				tv.append(" NO\nCreando archivos");

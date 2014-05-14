@@ -50,6 +50,10 @@ public class Kanji implements Serializable{
 
 	}
 	
+	public String toString(){
+		return kanji + "\t" + onyomi + "\t" + kunyomi + "\t" + meaning + "\t" +  strokes + "\t" + radical + "\t" + jouyou + "\t" + jlpt;
+	}
+	
 	public String getStrokes() {
 		return strokes;
 	}
@@ -73,9 +77,6 @@ public class Kanji implements Serializable{
 	public void setIndex(int index) {
 		this.index = index;
 	}
-
-	
-	// cosas >_<
 
 	public String getKanji() {
 		return kanji;
@@ -126,5 +127,16 @@ public class Kanji implements Serializable{
 	}
 
 
+	public int getIntStrokes() {
+		return Integer.parseInt(this.strokes);
+	}
+	
+	public int getIntJlpt() {
+		return Integer.parseInt(this.jlpt);
+	}
+	
+	public int getIntJouyou() {
+		return Integer.parseInt(this.jouyou);
+	}
 
 }

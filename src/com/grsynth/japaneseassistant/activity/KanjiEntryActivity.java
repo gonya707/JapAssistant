@@ -57,6 +57,7 @@ public class KanjiEntryActivity extends Activity{
 	
 	View.OnClickListener buttonHandler1 = new View.OnClickListener() {
 		public void onClick(View v) {
+			//TODO
 			//if (pos + 1 < lista.length){
 				in = new Intent(v.getContext(), KanjiEntryActivity.class);
 //				in.putExtra("info", lista[pos + 1]);
@@ -69,6 +70,7 @@ public class KanjiEntryActivity extends Activity{
 	
 	View.OnClickListener buttonHandler2 = new View.OnClickListener() {
 		public void onClick(View v) {
+			//TODO
 			//if (pos > 0){
 				in = new Intent(v.getContext(), KanjiEntryActivity.class);
 //				in.putExtra("info", lista[pos - 1]);

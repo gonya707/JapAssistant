@@ -3,6 +3,7 @@ package com.grsynth.japaneseassistant.activity;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import android.app.Activity;
@@ -25,6 +26,9 @@ public class KanjiGridActivity extends Activity {
 	private static final String TAG = "KanjiGridActivity"; 
 	Spinner spinner1;
 	Spinner spinner2;
+	GridView gridView;
+	ArrayList<Kanji> kanjiList;
+	ArrayAdapter<String> adapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,10 @@ public class KanjiGridActivity extends Activity {
 
 		// FILE READING AND DUMPING
 		FileInputStream fin;
-		final ArrayList<Kanji> kanjiList = new ArrayList<Kanji>();
+
 		Kanji k;
 		String ka[] = new String[2217];
+		kanjiList = new ArrayList<Kanji>();
 
 		try{
 			fin = openFileInput("kanji");
@@ -53,8 +58,8 @@ public class KanjiGridActivity extends Activity {
 			ex.printStackTrace();
 		} 
 
-		GridView gridView = (GridView) findViewById(R.id.gridView1);
-		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ka);
+		gridView = (GridView) findViewById(R.id.gridView1);
+		adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ka);
 
 		gridView.setAdapter(adapter);
 
@@ -68,9 +73,9 @@ public class KanjiGridActivity extends Activity {
 			}
 		});
 
-		
+
 		// SPINNER HANDLES
-		
+
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
 		spinner2 = (Spinner) findViewById(R.id.spinner2);
 
@@ -102,17 +107,95 @@ public class KanjiGridActivity extends Activity {
 				//Toast.makeText(getApplicationContext(), "nada seleccionado",Toast.LENGTH_SHORT).show();
 			}
 		});
-		
+
 		// BUTTON HANDLES
-		
+
 		final Button b1 = (Button) findViewById(R.id.button);
 		b1.setOnClickListener(buttonHandler1);
 
 	}
-	
+
 	View.OnClickListener buttonHandler1 = new View.OnClickListener() {
 		public void onClick(View v) {
-			Toast.makeText(getApplicationContext(), "Aplicar filtro: " + spinner1.getSelectedItemPosition() +", " + spinner2.getSelectedItemPosition() ,Toast.LENGTH_SHORT).show();
+			//Toast.makeText(getApplicationContext(), "Aplicar filtro: " + spinner1.getSelectedItemPosition() +", " + spinner2.getSelectedItemPosition() ,Toast.LENGTH_SHORT).show();
+
+			String ka[] = new String[2217]; 
+			int filter;
+			int compareTo;
+			Kanji kanjiBuffer;
+			int j = 0;
+			final ArrayList<Kanji> kanjiList2 = new ArrayList<Kanji>();
+
+			if (spinner1.getSelectedItemPosition() != 0 && spinner2.getSelectedItemPosition() !=0){
+				//rellenar ka con los elementos filtrados de kanjiList
+
+				switch (spinner1.getSelectedItemPosition()){
+				case 1: // number of strokes
+
+					compareTo = spinner2.getSelectedItemPosition();
+
+					for (int i = 0; i < 2217; i++){
+						kanjiBuffer = kanjiList.get(i);
+						filter = kanjiBuffer.getIntStrokes();
+						if (filter == compareTo){
+							ka[j] = kanjiBuffer.getKanji();
+							kanjiList2.add(kanjiBuffer);
+							j++;
+						}
+					}
+					break;
+					
+				case 2: // jlpt
+
+					compareTo = spinner2.getSelectedItemPosition();
+
+					for (int i = 0; i < 2217; i++){
+						kanjiBuffer = kanjiList.get(i);
+						filter = kanjiBuffer.getIntJlpt();
+						if (filter == compareTo){
+							ka[j] = kanjiBuffer.getKanji();
+							kanjiList2.add(kanjiBuffer);
+							j++;
+						}
+					}
+					break;
+					
+				case 3: // jouyou FIXME no funciono
+
+					compareTo = spinner2.getSelectedItemPosition();
+
+					for (int i = 0; i < 2217; i++){
+						kanjiBuffer = kanjiList.get(i);
+						filter = kanjiBuffer.getIntJouyou();
+						if (filter == compareTo){
+							ka[j] = kanjiBuffer.getKanji();
+							kanjiList2.add(kanjiBuffer);
+							j++;
+						}
+					}
+					break;
+				}
+			}
+
+			//adapter.clear();
+			try {
+				String[] grp = Arrays.copyOfRange(ka, 0, j-1);
+				adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, grp);
+				gridView.setAdapter(adapter);
+				
+				gridView.setOnItemClickListener(new OnItemClickListener() {
+					public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
+						Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
+						toAnotherActivity.putExtra("info", kanjiList2.get(position));
+						//toAnotherActivity.putExtra("position", position);
+						//toAnotherActivity.putExtra("list", kanjiList);
+						startActivityForResult(toAnotherActivity, 0);
+					}
+				});
+				
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 	};
 
