@@ -39,13 +39,13 @@ public class KanjiGridActivity extends Activity {
 		FileInputStream fin;
 
 		Kanji k;
-		String ka[] = new String[2217];
+		String ka[] = new String[getResources().getInteger(R.integer.number_of_kanji)];
 		kanjiList = new ArrayList<Kanji>();
 
 		try{
 			fin = openFileInput("kanji");
 			ObjectInputStream ois = new ObjectInputStream(fin);
-			for(int i = 0; i < 2217; i++){ //hacerlo hasta EOF, el fichero escrito esta entero
+			for(int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){ //hacerlo hasta EOF, el fichero escrito esta entero
 				k = (Kanji) ois.readObject();
 				kanjiList.add(k);
 				ka[i] = k.getKanji();
@@ -122,16 +122,16 @@ public class KanjiGridActivity extends Activity {
 	private void showFirstBoot(){ // set the inicial grid adapter to JLPT N5 to avoid overcharge
 
 		spinner1.setSelection(2); //jltp
-		spinner2.setSelection(5); //N5
+		spinner2.setSelection(5); //N5 Y U NO OBEY
 		
-		String ka[] = new String[2217]; 
+		String ka[] = new String[getResources().getInteger(R.integer.max_filter_length)]; 
 		int filter;
 		int compareTo = 5;
 		Kanji kanjiBuffer;
 		int j = 0;
 		final ArrayList<Kanji> kanjiList2 = new ArrayList<Kanji>();
 
-		for (int i = 0; i < 2217; i++){
+		for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
 			kanjiBuffer = kanjiList.get(i);
 			filter = kanjiBuffer.getIntJlpt();
 			if (filter == compareTo){
@@ -166,21 +166,21 @@ public class KanjiGridActivity extends Activity {
 		public void onClick(View v) {
 			//Toast.makeText(getApplicationContext(), "Aplicar filtro: " + spinner1.getSelectedItemPosition() +", " + spinner2.getSelectedItemPosition() ,Toast.LENGTH_SHORT).show();
 
-			String ka[] = new String[2217]; 
+			String ka[] = new String[getResources().getInteger(R.integer.max_filter_length)]; 
 			int filter;
 			int compareTo;
 			Kanji kanjiBuffer;
 			int j = 0;
 			final ArrayList<Kanji> kanjiList2 = new ArrayList<Kanji>();
-			if (spinner2.getSelectedItemPosition() !=0){
+			//if (spinner2.getSelectedItemPosition() !=0){
 				//rellenar ka con los elementos filtrados de kanjiList
 
 				switch (spinner1.getSelectedItemPosition()){
 				case 1: // number of strokes
 
-					compareTo = spinner2.getSelectedItemPosition();
+					compareTo = spinner2.getSelectedItemPosition() + 1;
 
-					for (int i = 0; i < 2217; i++){
+					for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
 						kanjiBuffer = kanjiList.get(i);
 						filter = kanjiBuffer.getIntStrokes();
 						if (filter == compareTo){
@@ -194,8 +194,7 @@ public class KanjiGridActivity extends Activity {
 				case 2: // jlpt
 
 					compareTo = spinner2.getSelectedItemPosition();
-
-					for (int i = 0; i < 2217; i++){
+					for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
 						kanjiBuffer = kanjiList.get(i);
 						filter = kanjiBuffer.getIntJlpt();
 						if (filter == compareTo){
@@ -206,14 +205,19 @@ public class KanjiGridActivity extends Activity {
 					}
 					break;
 
-				case 3: // jouyou FIXME no funciono
+				case 3: // jouyou 
 
-					compareTo = spinner2.getSelectedItemPosition();
+					String filterS;
+					
+					compareTo = spinner2.getSelectedItemPosition() + 1;
 
-					for (int i = 0; i < 2217; i++){
+					for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
 						kanjiBuffer = kanjiList.get(i);
-						filter = kanjiBuffer.getIntJouyou();
-						if (filter == compareTo){
+						filterS = kanjiBuffer.getJouyou();
+						if(filterS.startsWith("名")){
+							filterS = filterS.substring(1);
+						} 
+						if (Integer.parseInt(filterS) == compareTo){
 							ka[j] = kanjiBuffer.getKanji();
 							kanjiList2.add(kanjiBuffer);
 							j++;
@@ -221,8 +225,9 @@ public class KanjiGridActivity extends Activity {
 					}
 					break;
 				}
-			}else if(spinner1.getSelectedItemPosition() == 0){
-				for (int i = 0; i < 2217; i++){
+			//}else 
+				if(spinner1.getSelectedItemPosition() == 0){ // FIXME despues de hacer esto no se puede hacer click en un kanji
+				for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
 					kanjiBuffer = kanjiList.get(i);
 					ka[j] = kanjiBuffer.getKanji();
 					kanjiList2.add(kanjiBuffer);
