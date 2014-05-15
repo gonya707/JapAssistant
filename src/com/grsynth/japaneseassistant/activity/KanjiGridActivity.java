@@ -143,7 +143,7 @@ public class KanjiGridActivity extends Activity {
 
 		//adapter.clear();
 		try {
-			final String[] grp = Arrays.copyOfRange(ka, 0, j-1);
+			final String[] grp = Arrays.copyOfRange(ka, 0, j);
 			adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, grp);
 			gridView.setAdapter(adapter);
 
@@ -232,7 +232,7 @@ public class KanjiGridActivity extends Activity {
 
 			//adapter.clear();
 			try {
-				final String[] grp = Arrays.copyOfRange(ka, 0, j-1);
+				final String[] grp = Arrays.copyOfRange(ka, 0, j);
 				adapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_list_item_1, grp);
 				gridView.setAdapter(adapter);
 
