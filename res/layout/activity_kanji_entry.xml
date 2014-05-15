@@ -204,7 +204,7 @@
             android:id="@+id/previous"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentTop="true"
             android:text="@string/previous" />
 
@@ -212,7 +212,7 @@
             android:id="@+id/next"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:text="@string/next" />
     </RelativeLayout>

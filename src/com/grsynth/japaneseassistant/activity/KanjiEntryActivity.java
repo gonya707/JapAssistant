@@ -23,19 +23,6 @@ public class KanjiEntryActivity extends Activity{
 	Intent in;
 	TextView tv0, tv1, tv2, tv3, tv4, tv5, tv6, tv7;
 	
-	// prevents activity to restart when the orientation changes
-	@Override
-	public void onConfigurationChanged(Configuration newConfig) {
-	    super.onConfigurationChanged(newConfig);
-
-	    if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
-	        //setContentView(R.layout.activity_kanji_entry);
-
-	    } else {
-	        //setContentView(R.layout.activity_kanji_entry);
-	    }
-	}
-	
 	@SuppressWarnings("unchecked")
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
