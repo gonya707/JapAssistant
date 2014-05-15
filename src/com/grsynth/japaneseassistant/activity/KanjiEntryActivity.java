@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -22,6 +23,18 @@ public class KanjiEntryActivity extends Activity{
 	Intent in;
 	TextView tv0, tv1, tv2, tv3, tv4, tv5, tv6, tv7;
 	
+	// prevents activity to restart when the orientation changes
+	@Override
+	public void onConfigurationChanged(Configuration newConfig) {
+	    super.onConfigurationChanged(newConfig);
+
+	    if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE) {
+	        //setContentView(R.layout.activity_kanji_entry);
+
+	    } else {
+	        //setContentView(R.layout.activity_kanji_entry);
+	    }
+	}
 	
 	@SuppressWarnings("unchecked")
 	protected void onCreate(Bundle savedInstanceState) {
@@ -30,13 +43,13 @@ public class KanjiEntryActivity extends Activity{
 		
 		Log.d(TAG, "Entering onCreate");
 		
-		tv0 = (TextView) findViewById(R.id.kanji);
-		tv1 = (TextView) findViewById(R.id.kunyomi);
-		tv2 = (TextView) findViewById(R.id.onyomi);
-		tv3 = (TextView) findViewById(R.id.jouyou);
-		tv4 = (TextView) findViewById(R.id.jlpt);
-		tv5 = (TextView) findViewById(R.id.textView5);
-		tv6 = (TextView) findViewById(R.id.textView6);
+		tv0 = (TextView) findViewById(R.id.kanji_container);
+		tv1 = (TextView) findViewById(R.id.onyomi_container);
+		tv2 = (TextView) findViewById(R.id.kunyomi_container);
+		tv3 = (TextView) findViewById(R.id.jouyou_container);
+		tv4 = (TextView) findViewById(R.id.jlpt_container);
+		tv5 = (TextView) findViewById(R.id.strokes_container);
+		tv6 = (TextView) findViewById(R.id.radical_container);
 		tv7 = (TextView) findViewById(R.id.meaning);
 		
 		Kanji info = (Kanji) getIntent().getExtras().getSerializable("info");
@@ -54,8 +67,8 @@ public class KanjiEntryActivity extends Activity{
 	
 	private void refreshScreen(Kanji k){
 		tv0.setText(k.getKanji());
-		tv1.setText(k.getKunyomi());
-		tv2.setText(k.getOnyomi());
+		tv1.setText(k.getOnyomi());
+		tv2.setText(k.getKunyomi());
 		tv3.setText(k.getJouyou());
 		tv4.setText(k.getJlpt());
 		tv5.setText(k.getStrokes());
