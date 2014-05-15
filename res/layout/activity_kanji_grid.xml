@@ -12,7 +12,7 @@
         <Spinner
             android:id="@+id/spinner1"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight=".42"
             android:entries="@array/filter_1"
             android:prompt="@string/filter_prompt" />
@@ -20,16 +20,16 @@
         <Spinner
             android:id="@+id/spinner2"
             android:layout_width="0dp"
-            android:layout_height="wrap_content"
+            android:layout_height="40dp"
             android:layout_weight=".42"
             android:entries="@array/jlpt_level"
-            android:prompt="@string/empty"
+            android:prompt="@string/filter_prompt"
             
              />
 
         <Button
             android:id="@+id/button"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight=".16"
             android:spinnerMode="dialog"
@@ -44,7 +44,7 @@
         <GridView
             android:id="@+id/gridView1"
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
+            android:layout_height="wrap_content"
             android:numColumns="10" >
         </GridView>
     </LinearLayout>

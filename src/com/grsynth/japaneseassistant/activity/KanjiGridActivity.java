@@ -58,24 +58,6 @@ public class KanjiGridActivity extends Activity {
 
 		gridView = (GridView) findViewById(R.id.gridView1);
 
-		//show all
-		//adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, ka);
-		//gridView.setAdapter(adapter);
-
-
-
-		//		gridView.setOnItemClickListener(new OnItemClickListener() {
-		//			public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
-		//				Intent toAnotherActivity = new Intent(v.getContext(), KanjiEntryActivity.class);
-		//				toAnotherActivity.putExtra("info", kanjiList.get(position));
-		//				toAnotherActivity.putExtra("position", position);
-		//				toAnotherActivity.putExtra("list", kanjiList);
-		//				startActivityForResult(toAnotherActivity, 0);
-		//			}
-		//		});
-
-
-
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
 		spinner2 = (Spinner) findViewById(R.id.spinner2);
 
@@ -105,6 +87,19 @@ public class KanjiGridActivity extends Activity {
 
 				ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, smjb);
 				spinner2.setAdapter(spinnerArrayAdapter);
+				
+				switch (spinner1.getSelectedItemPosition()){
+				case 1: //strokes
+					spinner2.setSelection(0, false);
+					break;
+				case 2: //JLPT
+					spinner2.setSelection(5, false);
+					break;
+				case 3:
+					spinner2.setSelection(0, false);
+					break;
+				}
+				
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -116,13 +111,14 @@ public class KanjiGridActivity extends Activity {
 
 		final Button b1 = (Button) findViewById(R.id.button);
 		b1.setOnClickListener(buttonHandler1);
+		
 
 	}
 
 	private void showFirstBoot(){ // set the inicial grid adapter to JLPT N5 to avoid overcharge
 
-		spinner1.setSelection(2); //jltp
-		spinner2.setSelection(5); //N5 Y U NO OBEY
+		spinner1.setSelection(2, false); //jltp
+		spinner2.setSelection(5, false);
 		
 		String ka[] = new String[getResources().getInteger(R.integer.max_filter_length)]; 
 		int filter;
