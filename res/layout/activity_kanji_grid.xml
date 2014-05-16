@@ -13,7 +13,7 @@
             android:id="@+id/spinner1"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_weight=".42"
+            android:layout_weight=".68"
             android:entries="@array/filter_1"
             android:prompt="@string/filter_prompt" />
 
@@ -21,7 +21,7 @@
             android:id="@+id/spinner2"
             android:layout_width="0dp"
             android:layout_height="40dp"
-            android:layout_weight=".42"
+            android:layout_weight=".20"
             android:entries="@array/jlpt_level"
             android:prompt="@string/filter_prompt"
             
