@@ -49,6 +49,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
                             android:text="@string/onyomi"
                             android:textSize="18sp" />
 
@@ -57,6 +58,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="10dp"
+                            android:paddingRight="15dp"
                             android:text="@string/onyomi_example"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -72,6 +74,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
                             android:paddingTop="4dp"
                             android:text="@string/kunyomi"
                             android:textSize="18sp" />
@@ -81,6 +84,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
                             android:text="@string/kunyomi_example"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -96,6 +100,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
                             android:paddingTop="4dp"
                             android:text="@string/jouyou"
                             android:textSize="18sp" />
@@ -105,6 +110,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
                             android:text="@string/jouyou_example"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -121,6 +127,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
                             android:paddingTop="4dp"
+                            android:paddingRight="15dp"
                             android:text="@string/jlpt"
                             android:textSize="18sp" />
 
@@ -129,6 +136,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
                             android:text="@string/jlpt_example"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -145,6 +153,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
                             android:paddingTop="4dp"
+                            android:paddingRight="15dp"
                             android:text="@string/radical"
                             android:textSize="18sp" />
 
@@ -153,6 +162,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
                             android:text="@string/radical_example"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -169,6 +179,7 @@
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
                             android:paddingTop="4dp"
+                            android:paddingRight="15dp"
                             android:text="@string/number_of_strokes"
                             android:textSize="18sp" />
 
@@ -177,6 +188,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:paddingLeft="15dp"
+                            android:paddingRight="15dp"
                             android:text="@string/strokes_example"
                             android:textSize="18sp" />
                     </LinearLayout>
@@ -187,6 +199,7 @@
                         android:layout_height="wrap_content"
                         android:paddingLeft="25dp"
                         android:paddingTop="4dp"
+                        android:paddingRight="25dp"
                         android:text="@string/meaning_example"
                         android:textSize="24sp" />
                 </LinearLayout>
