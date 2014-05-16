@@ -79,5 +79,26 @@
     <string-array name="empty_list">
         <item></item>
     </string-array>
+    
+    <string-array name="number_of_questions">
+        <item>10 questions</item>
+        <item>25 questions</item>
+        <item>50 questions</item>
+        <item>100 questions</item>
+        <item>Infinite questions</item>
+    </string-array>
+    <string name="n1">N1</string>
+    <string name="n2">N2</string>
+    <string name="n3">N3</string>
+    <string name="n4">N4</string>
+    <string name="n5">N5</string>
+    <string name="kanji2meaning">Guess kanji from meaning</string>
+    <string name="meaning2kanji">Guess kanji from meaning</string>
+    <string name="kanji2kun">Guess kun\'yomi reading from kanji</string>
+    <string name="kanji2on">Guess on\'yomi reading from kanji</string>
+    <string name="kanji2onkun">Guess on\'yomi or kun\'yomi reading from kanji</string>
+    <string name="start_test">Start test</string>
+
+    
 
 </resources>

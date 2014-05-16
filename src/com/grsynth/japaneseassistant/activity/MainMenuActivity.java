@@ -30,8 +30,9 @@ public class MainMenuActivity extends Activity {
 
 		b1.setText("Vocabulary");
 		b2.setText("Kanji");
-		b3.setText("Settings menu");
-		b4.setText("");
+		b3.setText("Test");
+		b4.setText("Settings menu");
+		
 	}
 
 	View.OnClickListener buttonHandler1 = new View.OnClickListener() {
@@ -47,19 +48,22 @@ public class MainMenuActivity extends Activity {
 			startActivityForResult(toAnotherActivity, 0);
 		}
 	};
-
+	
 	View.OnClickListener buttonHandler3 = new View.OnClickListener() {
 		public void onClick(View v) {
-			Intent toAnotherActivity = new Intent(v.getContext(), SettingsActivity.class);
+			Intent toAnotherActivity = new Intent(v.getContext(), KanjiTestSettingsActivity.class);
 			startActivityForResult(toAnotherActivity, 0);
 		}
 	};
 
 	View.OnClickListener buttonHandler4 = new View.OnClickListener() {
 		public void onClick(View v) {
-			// it was the 4nd button
+			Intent toAnotherActivity = new Intent(v.getContext(), SettingsActivity.class);
+			startActivityForResult(toAnotherActivity, 0);
 		}
 	};
+
+
 }
 
 

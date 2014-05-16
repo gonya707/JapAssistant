@@ -27,6 +27,10 @@
         </activity>
         <activity android:name="com.grsynth.japaneseassistant.activity.SettingsActivity" >
         </activity>
+                <activity android:name="com.grsynth.japaneseassistant.activity.KanjiTestSettingsActivity" >
+        </activity>
+                        <activity android:name="com.grsynth.japaneseassistant.activity.KanjiTestActivity" >
+        </activity>
         <activity
             android:name="com.grsynth.japaneseassistant.activity.KanjiEntryActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
