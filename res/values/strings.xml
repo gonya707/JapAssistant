@@ -23,6 +23,7 @@
     <string name="previous">前 Previous</string>
     <string name="filter">Filter </string>
     <string name="filter_prompt">Field</string>
+    <string name="placeholder">placeholder</string>
 
     <string-array name="filter_1">
         <item>Clear filters</item>
@@ -92,7 +93,7 @@
     <string name="n3">N3</string>
     <string name="n4">N4</string>
     <string name="n5">N5</string>
-    <string name="kanji2meaning">Guess kanji from meaning</string>
+    <string name="kanji2meaning">Guess meaning from kanji</string>
     <string name="meaning2kanji">Guess kanji from meaning</string>
     <string name="kanji2kun">Guess kun\'yomi reading from kanji</string>
     <string name="kanji2on">Guess on\'yomi reading from kanji</string>

@@ -84,7 +84,7 @@ public class KanjiTestSettingsActivity extends Activity{
 						break;
 					}
 
-					Intent toAnotherActivity = new Intent(v.getContext(), KanjiTestActivity.class);
+					Intent toAnotherActivity = new Intent(v.getContext(), KanjiToMeaningTestActivity.class); // TODO mas tipos
 					toAnotherActivity.putExtra("nQuestion", questions);
 					toAnotherActivity.putExtra("category", rg.indexOfChild(rb)); //TODO
 					toAnotherActivity.putExtra("list", kanjiList);

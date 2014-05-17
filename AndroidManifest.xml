@@ -27,9 +27,12 @@
         </activity>
         <activity android:name="com.grsynth.japaneseassistant.activity.SettingsActivity" >
         </activity>
+        <activity android:name="com.grsynth.japaneseassistant.activity.TestResultActivity" >
+        </activity>
+        
                 <activity android:name="com.grsynth.japaneseassistant.activity.KanjiTestSettingsActivity" >
         </activity>
-                        <activity android:name="com.grsynth.japaneseassistant.activity.KanjiTestActivity" >
+                        <activity android:name="com.grsynth.japaneseassistant.activity.KanjiToMeaningTestActivity" >
         </activity>
         <activity
             android:name="com.grsynth.japaneseassistant.activity.KanjiEntryActivity"

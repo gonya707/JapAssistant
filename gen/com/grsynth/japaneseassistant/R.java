@@ -1088,8 +1088,11 @@ containing a value of this type.
         public static final int ic_launcher=0x7f020057;
     }
     public static final class id {
-        public static final int RL1=0x7f050068;
-        public static final int RelativeLayout1=0x7f05006e;
+        public static final int LinearLayout1=0x7f050067;
+        public static final int LinearLayout2=0x7f05006f;
+        public static final int LinearLayout3=0x7f05006c;
+        public static final int RL1=0x7f050072;
+        public static final int RelativeLayout1=0x7f05007c;
         public static final int action_bar=0x7f05001c;
         public static final int action_bar_activity_content=0x7f050015;
         public static final int action_bar_container=0x7f05001b;
@@ -1101,20 +1104,25 @@ containing a value of this type.
         public static final int action_menu_divider=0x7f050016;
         public static final int action_menu_presenter=0x7f050017;
         public static final int action_mode_close_button=0x7f050024;
-        public static final int action_settings=0x7f050071;
+        public static final int action_settings=0x7f05007f;
         public static final int activity_chooser_view_content=0x7f050025;
         public static final int always=0x7f05000b;
+        public static final int b=0x7f05007b;
+        public static final int b1=0x7f050070;
+        public static final int b2=0x7f050071;
+        public static final int b3=0x7f05006d;
+        public static final int b4=0x7f05006e;
         public static final int beginning=0x7f050011;
         public static final int button=0x7f050059;
-        public static final int button1=0x7f05006a;
-        public static final int button2=0x7f05006b;
-        public static final int button3=0x7f05006c;
-        public static final int button4=0x7f05006d;
-        public static final int checkBox1=0x7f05005c;
-        public static final int checkBox2=0x7f05005d;
-        public static final int checkBox3=0x7f05005e;
-        public static final int checkBox4=0x7f05005f;
-        public static final int checkBox5=0x7f050060;
+        public static final int button1=0x7f050074;
+        public static final int button2=0x7f050075;
+        public static final int button3=0x7f050076;
+        public static final int button4=0x7f050077;
+        public static final int checkBox1=0x7f05005b;
+        public static final int checkBox2=0x7f05005c;
+        public static final int checkBox3=0x7f05005d;
+        public static final int checkBox4=0x7f05005e;
+        public static final int checkBox5=0x7f05005f;
         public static final int checkbox=0x7f05002d;
         public static final int collapseActionView=0x7f05000d;
         public static final int default_activity_button=0x7f050028;
@@ -1135,10 +1143,11 @@ containing a value of this type.
         public static final int jlpt_container=0x7f05004d;
         public static final int jouyou_colon=0x7f050049;
         public static final int jouyou_container=0x7f05004a;
-        public static final int kana=0x7f050070;
+        public static final int kana=0x7f05007e;
         public static final int kanji_container=0x7f050040;
         public static final int kunyomi_colon=0x7f050046;
         public static final int kunyomi_container=0x7f050047;
+        public static final int linearLayout4=0x7f050068;
         public static final int linear_info=0x7f05003e;
         public static final int linear_jlpt=0x7f05004b;
         public static final int linear_jouyou=0x7f050048;
@@ -1147,10 +1156,12 @@ containing a value of this type.
         public static final int linear_radical=0x7f05004e;
         public static final int linear_strokes=0x7f050051;
         public static final int listMode=0x7f050001;
-        public static final int listView1=0x7f050069;
+        public static final int listView1=0x7f050073;
         public static final int list_item=0x7f050029;
         public static final int meaning=0x7f050054;
+        public static final int message=0x7f050069;
         public static final int middle=0x7f050012;
+        public static final int mode=0x7f05007a;
         public static final int never=0x7f050009;
         public static final int next=0x7f050056;
         public static final int none=0x7f050010;
@@ -1160,18 +1171,20 @@ containing a value of this type.
         public static final int previous=0x7f050055;
         public static final int progress_circular=0x7f050018;
         public static final int progress_horizontal=0x7f050019;
+        public static final int questions=0x7f050079;
         public static final int radical_colon=0x7f05004f;
         public static final int radical_container=0x7f050050;
         public static final int radio=0x7f05002f;
-        public static final int radioButton1=0x7f050062;
-        public static final int radioButton2=0x7f050063;
-        public static final int radioButton3=0x7f050064;
-        public static final int radioButton4=0x7f050065;
-        public static final int radioButton5=0x7f050066;
-        public static final int radioGroup=0x7f050061;
+        public static final int radioButton1=0x7f050061;
+        public static final int radioButton2=0x7f050062;
+        public static final int radioButton3=0x7f050063;
+        public static final int radioButton4=0x7f050064;
+        public static final int radioButton5=0x7f050065;
+        public static final int radioGroup=0x7f050060;
         public static final int relative_botonera=0x7f05003d;
         public static final int relative_data_layout=0x7f050041;
         public static final int relative_kanji_layout=0x7f05003f;
+        public static final int right=0x7f05006a;
         public static final int search_badge=0x7f050032;
         public static final int search_bar=0x7f050031;
         public static final int search_button=0x7f050033;
@@ -1186,7 +1199,7 @@ containing a value of this type.
         public static final int showCustom=0x7f050007;
         public static final int showHome=0x7f050004;
         public static final int showTitle=0x7f050006;
-        public static final int spinner=0x7f050067;
+        public static final int spinner=0x7f050066;
         public static final int spinner1=0x7f050057;
         public static final int spinner2=0x7f050058;
         public static final int split_action_bar=0x7f05001e;
@@ -1197,11 +1210,12 @@ containing a value of this type.
         public static final int tabMode=0x7f050002;
         public static final int title=0x7f05002b;
         public static final int top_action_bar=0x7f050020;
-        public static final int tv=0x7f05005b;
+        public static final int tv=0x7f050078;
         public static final int up=0x7f050021;
         public static final int useLogo=0x7f050003;
         public static final int withText=0x7f05000c;
-        public static final int word=0x7f05006f;
+        public static final int word=0x7f05007d;
+        public static final int wrong=0x7f05006b;
     }
     public static final class integer {
         /**  The maximum number of action buttons that should be permitted within
@@ -1257,13 +1271,14 @@ containing a value of this type.
         public static final int abc_simple_decor=0x7f030017;
         public static final int activity_kanji_entry=0x7f030018;
         public static final int activity_kanji_grid=0x7f030019;
-        public static final int activity_kanji_test=0x7f03001a;
-        public static final int activity_kanji_test_settings=0x7f03001b;
+        public static final int activity_kanji_test_settings=0x7f03001a;
+        public static final int activity_kanji_to_meaning_test=0x7f03001b;
         public static final int activity_list=0x7f03001c;
         public static final int activity_menu=0x7f03001d;
         public static final int activity_settings=0x7f03001e;
-        public static final int activity_vocab_entry=0x7f03001f;
-        public static final int support_simple_spinner_dropdown_item=0x7f030020;
+        public static final int activity_test_result=0x7f03001f;
+        public static final int activity_vocab_entry=0x7f030020;
+        public static final int support_simple_spinner_dropdown_item=0x7f030021;
     }
     public static final class menu {
         public static final int menu=0x7f0d0000;
@@ -1319,28 +1334,29 @@ containing a value of this type.
         public static final int jlpt_example=0x7f0a0018;
         public static final int jouyou=0x7f0a001c;
         public static final int jouyou_example=0x7f0a0017;
-        public static final int kanji2kun=0x7f0a002a;
-        public static final int kanji2meaning=0x7f0a0028;
-        public static final int kanji2on=0x7f0a002b;
-        public static final int kanji2onkun=0x7f0a002c;
+        public static final int kanji2kun=0x7f0a002b;
+        public static final int kanji2meaning=0x7f0a0029;
+        public static final int kanji2on=0x7f0a002c;
+        public static final int kanji2onkun=0x7f0a002d;
         public static final int kanji_example=0x7f0a0011;
         public static final int kunyomi=0x7f0a001a;
         public static final int kunyomi_example=0x7f0a0013;
-        public static final int meaning2kanji=0x7f0a0029;
+        public static final int meaning2kanji=0x7f0a002a;
         public static final int meaning_example=0x7f0a0014;
-        public static final int n1=0x7f0a0023;
-        public static final int n2=0x7f0a0024;
-        public static final int n3=0x7f0a0025;
-        public static final int n4=0x7f0a0026;
-        public static final int n5=0x7f0a0027;
+        public static final int n1=0x7f0a0024;
+        public static final int n2=0x7f0a0025;
+        public static final int n3=0x7f0a0026;
+        public static final int n4=0x7f0a0027;
+        public static final int n5=0x7f0a0028;
         public static final int next=0x7f0a001f;
         public static final int number_of_strokes=0x7f0a001d;
         public static final int onyomi=0x7f0a0019;
         public static final int onyomi_example=0x7f0a0012;
+        public static final int placeholder=0x7f0a0023;
         public static final int previous=0x7f0a0020;
         public static final int radical=0x7f0a001e;
         public static final int radical_example=0x7f0a0016;
-        public static final int start_test=0x7f0a002d;
+        public static final int start_test=0x7f0a002e;
         public static final int strokes_example=0x7f0a0015;
     }
     public static final class style {
