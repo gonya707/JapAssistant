@@ -92,8 +92,14 @@ public class KanjiTestSettingsActivity extends Activity{
 					case 1:
 						toAnotherActivity = new Intent(v.getContext(), MeaningToKanjiTestActivity.class); 
 						break;
+					case 2:
+						toAnotherActivity = new Intent(v.getContext(), KanjiToKunyomiTestActivity.class); 
+						break;
+					case 3:
+						toAnotherActivity = new Intent(v.getContext(), KanjiToOnyomiTestActivity.class); 
+						break;
 					default:
-		
+
 						break;
 					}
 

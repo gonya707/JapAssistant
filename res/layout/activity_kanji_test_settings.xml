@@ -64,12 +64,6 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/kanji2on" />
-
-        <RadioButton
-            android:id="@+id/radioButton5"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/kanji2onkun" />
     </RadioGroup>
 
     <Spinner

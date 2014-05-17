@@ -63,7 +63,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 		
 		ran = new Random();
 		first = ran.nextInt(kanjiList.size());
-		jump =  ran.nextInt(kanjiList.size());
+		jump =  1 + ran.nextInt(kanjiList.size() - 1);
 		
 		tvNQuestion = (TextView) findViewById(R.id.message);
 		tvRight = (TextView) findViewById(R.id.right);
@@ -218,7 +218,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 	void getAnswers(Kanji kan, int q){
 		Random ran = new Random();
 		int position = ran.nextInt(4);
-		int jump = ran.nextInt(kanjiList.size());
+		int jump =  1 + ran.nextInt(kanjiList.size() - 1);
 		
 		switch (position){
 		case 0:

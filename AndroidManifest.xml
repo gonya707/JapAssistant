@@ -24,26 +24,50 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.grsynth.japaneseassistant.activity.ListActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.ListActivity"
+            android:launchMode="singleInstance" >
         </activity>
-        <activity android:name="com.grsynth.japaneseassistant.activity.SettingsActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.SettingsActivity"
+            android:launchMode="singleInstance" >
         </activity>
-        <activity android:name="com.grsynth.japaneseassistant.activity.TestResultActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.TestResultActivity"
+            android:launchMode="singleInstance" >
         </activity>
-        <activity android:name="com.grsynth.japaneseassistant.activity.MeaningToKanjiTestActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.MeaningToKanjiTestActivity"
+            android:launchMode="singleInstance" >
         </activity>
-        <activity android:name="com.grsynth.japaneseassistant.activity.KanjiTestSettingsActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.KanjiTestSettingsActivity"
+            android:launchMode="singleInstance" >
         </activity>
-        <activity android:name="com.grsynth.japaneseassistant.activity.KanjiToMeaningTestActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.KanjiToMeaningTestActivity"
+            android:launchMode="singleInstance" >
+        </activity>
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.KanjiToOnyomiTestActivity"
+            android:launchMode="singleInstance" >
+        </activity>
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.KanjiToKunyomiTestActivity"
+            android:launchMode="singleInstance" >
         </activity>
         <activity
             android:name="com.grsynth.japaneseassistant.activity.KanjiEntryActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:launchMode="singleInstance" >
         </activity>
-        <activity android:name="com.grsynth.japaneseassistant.activity.VocabEntryActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.VocabEntryActivity"
+            android:launchMode="singleInstance" >
         </activity>
-        <activity android:name="com.grsynth.japaneseassistant.activity.KanjiGridActivity" >
+        <activity
+            android:name="com.grsynth.japaneseassistant.activity.KanjiGridActivity"
+            android:launchMode="singleInstance" >
         </activity>
     </application>
 
