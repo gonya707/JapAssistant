@@ -1274,11 +1274,12 @@ containing a value of this type.
         public static final int activity_kanji_test_settings=0x7f03001a;
         public static final int activity_kanji_to_meaning_test=0x7f03001b;
         public static final int activity_list=0x7f03001c;
-        public static final int activity_menu=0x7f03001d;
-        public static final int activity_settings=0x7f03001e;
-        public static final int activity_test_result=0x7f03001f;
-        public static final int activity_vocab_entry=0x7f030020;
-        public static final int support_simple_spinner_dropdown_item=0x7f030021;
+        public static final int activity_meaning_to_kanji_test=0x7f03001d;
+        public static final int activity_menu=0x7f03001e;
+        public static final int activity_settings=0x7f03001f;
+        public static final int activity_test_result=0x7f030020;
+        public static final int activity_vocab_entry=0x7f030021;
+        public static final int support_simple_spinner_dropdown_item=0x7f030022;
     }
     public static final class menu {
         public static final int menu=0x7f0d0000;

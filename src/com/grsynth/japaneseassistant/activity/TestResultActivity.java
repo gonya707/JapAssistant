@@ -14,12 +14,7 @@ public class TestResultActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_test_result);
-		
-//		in.putExtra("right", r);
-//		in.putExtra("wrong", w);
-//		in.putExtra("category", "kanji2Meaning"); 
-//		in.putExtra("nQuestion", nQuestion);
-		
+
 		TextView tv1 = (TextView) findViewById(R.id.right);
 		TextView tv2 = (TextView) findViewById(R.id.wrong);
 		TextView tv3 = (TextView) findViewById(R.id.questions);

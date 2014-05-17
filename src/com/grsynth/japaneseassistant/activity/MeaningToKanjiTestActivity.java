@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.grsynth.japaneseassistant.R;
 import com.grsynth.japaneseassistant.Type.Kanji;
 
-public class KanjiToMeaningTestActivity extends Activity {
+public class MeaningToKanjiTestActivity extends Activity {
 	
 	Button tvOpA;
 	Button tvOpB;
@@ -30,7 +30,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 	
 	int questionIndex;
 	int nQuestion;
-
+	int category;
 	ArrayList<Kanji> kanjiList;
 	
 	int askedQuestionKanjiIndex;
@@ -43,10 +43,11 @@ public class KanjiToMeaningTestActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_kanji_to_meaning_test);
+		setContentView(R.layout.activity_meaning_to_kanji_test);
 
 		questionIndex = 1;
 		nQuestion = getIntent().getExtras().getInt("nQuestion");
+		category = getIntent().getExtras().getInt("category");
 		kanjiList = (ArrayList<Kanji>) getIntent().getExtras().getSerializable("list");
 		
 		tvKanji = (TextView) findViewById(R.id.kanji_container);
@@ -63,7 +64,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 		
 		ran = new Random();
 		first = ran.nextInt(kanjiList.size());
-		jump =  ran.nextInt(kanjiList.size());
+		jump =  1 + ran.nextInt(kanjiList.size() - 1); //the jump shouldn't be 0
 		
 		tvNQuestion = (TextView) findViewById(R.id.message);
 		tvRight = (TextView) findViewById(R.id.right);
@@ -90,7 +91,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 			String answer = (String) tvOpA.getText();
 			questionIndex++;
 			
-			if(answer == kanjiList.get(askedQuestionKanjiIndex).getMeaning()){ //right
+			if(answer == kanjiList.get(askedQuestionKanjiIndex).getKanji()){ //right
 				r++;
 				// TODO add scores
 			}
@@ -108,7 +109,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 				Intent in = new Intent(getApplicationContext(), TestResultActivity.class);
 				in.putExtra("right", r);
 				in.putExtra("wrong", w);
-				in.putExtra("category", "kanji2Meaning"); 
+				in.putExtra("category", "meaning2Kanji"); 
 				in.putExtra("nQuestion", nQuestion);
 				finish(); // i wonder if this works
 				startActivityForResult(in, 0);
@@ -121,7 +122,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 			String answer = (String) tvOpB.getText();
 			questionIndex++;
 			
-			if(answer == kanjiList.get(askedQuestionKanjiIndex).getMeaning()){ //right
+			if(answer == kanjiList.get(askedQuestionKanjiIndex).getKanji()){ //right
 				r++;
 				// TODO add scores
 			}
@@ -139,7 +140,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 				Intent in = new Intent(getApplicationContext(), TestResultActivity.class);
 				in.putExtra("right", r);
 				in.putExtra("wrong", w);
-				in.putExtra("category", "kanji2Meaning"); 
+				in.putExtra("category", "meaning2Kanji"); 
 				in.putExtra("nQuestion", nQuestion);
 				finish(); // i wonder if this works
 				startActivityForResult(in, 0);
@@ -152,7 +153,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 			String answer = (String) tvOpC.getText();
 			questionIndex++;
 			
-			if(answer == kanjiList.get(askedQuestionKanjiIndex).getMeaning()){ //right
+			if(answer == kanjiList.get(askedQuestionKanjiIndex).getKanji()){ //right
 				r++;
 				// TODO add scores
 			}
@@ -170,7 +171,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 				Intent in = new Intent(getApplicationContext(), TestResultActivity.class);
 				in.putExtra("right", r);
 				in.putExtra("wrong", w);
-				in.putExtra("category", "kanji2Meaning"); 
+				in.putExtra("category", "meaning2Kanji"); 
 				in.putExtra("nQuestion", nQuestion);
 				finish(); // i wonder if this works
 				startActivityForResult(in, 0);
@@ -183,7 +184,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 			String answer = (String) tvOpD.getText();
 			questionIndex++;
 			
-			if(answer == kanjiList.get(askedQuestionKanjiIndex).getMeaning()){ //right
+			if(answer == kanjiList.get(askedQuestionKanjiIndex).getKanji()){ //right
 				r++;
 				// TODO add scores
 			}
@@ -201,7 +202,7 @@ public class KanjiToMeaningTestActivity extends Activity {
 				Intent in = new Intent(getApplicationContext(), TestResultActivity.class);
 				in.putExtra("right", r);
 				in.putExtra("wrong", w);
-				in.putExtra("category", "kanji2Meaning"); 
+				in.putExtra("category", "meaning2Kanji"); 
 				in.putExtra("nQuestion", nQuestion);
 				finish(); // i wonder if this works
 				startActivityForResult(in, 0);
@@ -211,39 +212,39 @@ public class KanjiToMeaningTestActivity extends Activity {
 	
 	void getQuestion(int q){
 		Kanji k = kanjiList.get(q);
-		tvKanji.setText(k.getKanji());
+		tvKanji.setText(k.getMeaning());
 		getAnswers(k, q);
 	}
 	
 	void getAnswers(Kanji kan, int q){
 		Random ran = new Random();
 		int position = ran.nextInt(4);
-		int jump = ran.nextInt(kanjiList.size());
+		int jump =  1 + ran.nextInt(kanjiList.size() - 1);
 		
 		switch (position){
 		case 0:
-			tvOpA.setText(kan.getMeaning());
-			tvOpB.setText(kanjiList.get((q + (jump)) % kanjiList.size()).getMeaning());
-			tvOpC.setText(kanjiList.get((q + (2 * jump)) % kanjiList.size()).getMeaning());
-			tvOpD.setText(kanjiList.get((q + (3 * jump)) % kanjiList.size()).getMeaning());
+			tvOpA.setText(kan.getKanji());
+			tvOpB.setText(kanjiList.get((q + (jump)) % kanjiList.size()).getKanji());
+			tvOpC.setText(kanjiList.get((q + (2 * jump)) % kanjiList.size()).getKanji());
+			tvOpD.setText(kanjiList.get((q + (3 * jump)) % kanjiList.size()).getKanji());
 			break;
 		case 1:
-			tvOpB.setText(kan.getMeaning());			
-			tvOpA.setText(kanjiList.get((q + (jump)) % kanjiList.size()).getMeaning());
-			tvOpC.setText(kanjiList.get((q + (2 * jump)) % kanjiList.size()).getMeaning());
-			tvOpD.setText(kanjiList.get((q + (3 * jump)) % kanjiList.size()).getMeaning());
+			tvOpB.setText(kan.getKanji());			
+			tvOpA.setText(kanjiList.get((q + (jump)) % kanjiList.size()).getKanji());
+			tvOpC.setText(kanjiList.get((q + (2 * jump)) % kanjiList.size()).getKanji());
+			tvOpD.setText(kanjiList.get((q + (3 * jump)) % kanjiList.size()).getKanji());
 			break;
 		case 2:
-			tvOpC.setText(kan.getMeaning());			
-			tvOpA.setText(kanjiList.get((q + (jump)) % kanjiList.size()).getMeaning());
-			tvOpB.setText(kanjiList.get((q + (2 * jump)) % kanjiList.size()).getMeaning());
-			tvOpD.setText(kanjiList.get((q + (3 * jump)) % kanjiList.size()).getMeaning());
+			tvOpC.setText(kan.getKanji());			
+			tvOpA.setText(kanjiList.get((q + (jump)) % kanjiList.size()).getKanji());
+			tvOpB.setText(kanjiList.get((q + (2 * jump)) % kanjiList.size()).getKanji());
+			tvOpD.setText(kanjiList.get((q + (3 * jump)) % kanjiList.size()).getKanji());
 			break;
 		default:
-			tvOpD.setText(kan.getMeaning());			
-			tvOpA.setText(kanjiList.get((q + (jump)) % kanjiList.size()).getMeaning());
-			tvOpB.setText(kanjiList.get((q + (2 * jump)) % kanjiList.size()).getMeaning());
-			tvOpC.setText(kanjiList.get((q + (3 * jump)) % kanjiList.size()).getMeaning());
+			tvOpD.setText(kan.getKanji());			
+			tvOpA.setText(kanjiList.get((q + (jump)) % kanjiList.size()).getKanji());
+			tvOpB.setText(kanjiList.get((q + (2 * jump)) % kanjiList.size()).getKanji());
+			tvOpC.setText(kanjiList.get((q + (3 * jump)) % kanjiList.size()).getKanji());
 			break;
 		}
 		

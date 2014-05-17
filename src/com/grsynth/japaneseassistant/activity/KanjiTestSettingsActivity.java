@@ -84,9 +84,20 @@ public class KanjiTestSettingsActivity extends Activity{
 						break;
 					}
 
-					Intent toAnotherActivity = new Intent(v.getContext(), KanjiToMeaningTestActivity.class); // TODO mas tipos
+					Intent toAnotherActivity = null;
+					switch (rg.indexOfChild(rb)){
+					case 0:
+						toAnotherActivity = new Intent(v.getContext(), KanjiToMeaningTestActivity.class);
+						break;
+					case 1:
+						toAnotherActivity = new Intent(v.getContext(), MeaningToKanjiTestActivity.class); 
+						break;
+					default:
+		
+						break;
+					}
+
 					toAnotherActivity.putExtra("nQuestion", questions);
-					toAnotherActivity.putExtra("category", rg.indexOfChild(rb)); //TODO
 					toAnotherActivity.putExtra("list", kanjiList);
 					startActivityForResult(toAnotherActivity, 0);
 				}
