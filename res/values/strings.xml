@@ -15,8 +15,13 @@
     <string name="jlpt_example">4</string>
     <string name="onyomi">On: </string>
     <string name="kunyomi">Kun: </string>
+    <string name="onyomi_score">On reading</string>
+    <string name="kunyomi_score">Kun reading</string>
     <string name="jlpt">JLPT: </string>
     <string name="jouyou">Jouyou: </string>
+    <string name="meaning">Meaning</string>
+    <string name="SCORES">SCORES</string>
+    
     <string name="number_of_strokes">Strokes: </string>
     <string name="radical">Radical: </string>
     <string name="next">次 \nNext</string>

@@ -96,6 +96,11 @@ public class SettingsActivity extends Activity {
 				ObjectInputStream ois = new ObjectInputStream(fin);
 				ois.close();
 				tv.append(" SI");
+				
+				tv.append("\nBorrando kanji de la memoria... ");
+				deleteFile("kanji");
+				tv.append("hecho");
+				
 			} catch (FileNotFoundException e) {
 				tv.append(" NO");
 				e.printStackTrace();
@@ -115,10 +120,6 @@ public class SettingsActivity extends Activity {
 			dump = flr.readTxt(getApplicationContext());
 			jtp = new JapTextParser(dump);
 			entries = jtp.getCompleteList();
-			tv.append("hecho");
-			
-			tv.append("\nBorrando kanji de la memoria... ");
-			deleteFile("kanji");
 			tv.append("hecho");
 			
 			tv.append("\nCreando archivo kanji");
@@ -154,6 +155,11 @@ public class SettingsActivity extends Activity {
 				ObjectInputStream ois = new ObjectInputStream(fin);
 				ois.close();
 				tv.append(" SI");
+				
+				tv.append("\nBorrando scoreKanji de la memoria... ");
+				deleteFile("scoreKanji");
+				tv.append("hecho");
+				
 			} catch (FileNotFoundException e) {
 				tv.append(" NO");
 				e.printStackTrace();
@@ -162,21 +168,22 @@ public class SettingsActivity extends Activity {
 			} catch (IOException e) {
 				e.printStackTrace();
 			} 
-			
-			tv.append("\nBorrando scoreKanji de la memoria... ");
-			deleteFile("scoreKanji");
-			tv.append("hecho");
 
 			try {
 				tv.append("\nCreando scoreKanji...");
 				FileOutputStream fos = openFileOutput("scoreKanji", Context.MODE_PRIVATE);
 				ObjectOutputStream oos = new ObjectOutputStream(fos);
-				ScoreKanji sk = new ScoreKanji(0, 0, 0, 0);
+				
 				for(int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
+					ScoreKanji sk = new ScoreKanji(-1, -1, -1, -1, i);
 					oos.writeObject(sk);
+					if (i % 100 == 0){
+						tv.append("\nInsertado: (" + i + ") " + sk.meaning);
+					}
 				}
 				fos.close();
-				tv.append(" hecho");
+				tv.append(" hecho.");
+				
 			} catch (FileNotFoundException e) {
 				e.printStackTrace();
 			} catch (NotFoundException e) {

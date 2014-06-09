@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <integer name="number_of_kanji">2255</integer>
+<!--     <integer name="number_of_kanji">2255</integer> -->
+     <integer name="number_of_kanji">100</integer>
     <integer name="max_filter_length">1300</integer>
+    
+    <color name="translucent_black">#80000000</color>
+    <color name="transparent">#ff000000</color>
 
 </resources>

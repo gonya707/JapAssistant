@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -19,6 +20,7 @@ import android.widget.Spinner;
 
 import com.grsynth.japaneseassistant.R;
 import com.grsynth.japaneseassistant.Type.Kanji;
+import com.grsynth.japaneseassistant.Type.ScoreKanji;
 public class KanjiGridActivity extends Activity {
 
 	private static final String TAG = "KanjiGridActivity"; 
@@ -26,7 +28,9 @@ public class KanjiGridActivity extends Activity {
 	Spinner spinner2;
 	GridView gridView;
 	ArrayList<Kanji> kanjiList;
+	ArrayList<ScoreKanji> scoreList = new ArrayList<ScoreKanji>();
 	ArrayAdapter<String> adapter;
+	
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -36,28 +40,35 @@ public class KanjiGridActivity extends Activity {
 		Log.d(TAG, "Entering onCreate");
 
 		// FILE READING AND DUMPING
-		FileInputStream fin;
-
+		
 		Kanji k;
 		String ka[] = new String[getResources().getInteger(R.integer.number_of_kanji)];
 		kanjiList = new ArrayList<Kanji>();
 
 		try{
-			fin = openFileInput("kanji");
-			ObjectInputStream ois = new ObjectInputStream(fin);
-			for(int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){ //hacerlo hasta EOF, el fichero escrito esta entero
-				k = (Kanji) ois.readObject();
+			FileInputStream finK = openFileInput("kanji");
+			ObjectInputStream oisK = new ObjectInputStream(finK);
+			
+			FileInputStream finS = openFileInput("scoreKanji");
+			ObjectInputStream oisS = new ObjectInputStream(finS);
+
+			for(int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){ 
+				k = (Kanji) oisK.readObject();
 				kanjiList.add(k);
 				ka[i] = k.getKanji();
+				
+				scoreList.add((ScoreKanji) oisS.readObject());
 			}
+			
 
-			ois.close();
+			oisK.close();
+			oisS.close();
+
 		}catch(Exception ex){
 			ex.printStackTrace();
 		} 
 
 		gridView = (GridView) findViewById(R.id.gridView1);
-
 		spinner1 = (Spinner) findViewById(R.id.spinner1);
 		spinner2 = (Spinner) findViewById(R.id.spinner2);
 
@@ -87,7 +98,7 @@ public class KanjiGridActivity extends Activity {
 
 				ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item, smjb);
 				spinner2.setAdapter(spinnerArrayAdapter);
-				
+
 				switch (spinner1.getSelectedItemPosition()){
 				case 1: //strokes
 					spinner2.setSelection(0, false);
@@ -99,7 +110,7 @@ public class KanjiGridActivity extends Activity {
 					spinner2.setSelection(0, false);
 					break;
 				}
-				
+
 			}
 			@Override
 			public void onNothingSelected(AdapterView<?> arg0) {
@@ -111,7 +122,7 @@ public class KanjiGridActivity extends Activity {
 
 		final Button b1 = (Button) findViewById(R.id.button);
 		b1.setOnClickListener(buttonHandler1);
-		
+
 
 	}
 
@@ -119,7 +130,7 @@ public class KanjiGridActivity extends Activity {
 
 		spinner1.setSelection(2, false); //jltp
 		spinner2.setSelection(5, false);
-		
+
 		String ka[] = new String[getResources().getInteger(R.integer.max_filter_length)]; 
 		int filter;
 		int compareTo = 5;
@@ -169,60 +180,60 @@ public class KanjiGridActivity extends Activity {
 			int j = 0;
 			final ArrayList<Kanji> kanjiList2 = new ArrayList<Kanji>();
 			//if (spinner2.getSelectedItemPosition() !=0){
-				//rellenar ka con los elementos filtrados de kanjiList
+			//rellenar ka con los elementos filtrados de kanjiList
 
-				switch (spinner1.getSelectedItemPosition()){
-				case 1: // number of strokes
+			switch (spinner1.getSelectedItemPosition()){
+			case 1: // number of strokes
 
-					compareTo = spinner2.getSelectedItemPosition() + 1;
+				compareTo = spinner2.getSelectedItemPosition() + 1;
 
-					for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
-						kanjiBuffer = kanjiList.get(i);
-						filter = kanjiBuffer.getIntStrokes();
-						if (filter == compareTo){
-							ka[j] = kanjiBuffer.getKanji();
-							kanjiList2.add(kanjiBuffer);
-							j++;
-						}
+				for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
+					kanjiBuffer = kanjiList.get(i);
+					filter = kanjiBuffer.getIntStrokes();
+					if (filter == compareTo){
+						ka[j] = kanjiBuffer.getKanji();
+						kanjiList2.add(kanjiBuffer);
+						j++;
 					}
-					break;
-
-				case 2: // jlpt
-
-					compareTo = spinner2.getSelectedItemPosition();
-					for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
-						kanjiBuffer = kanjiList.get(i);
-						filter = kanjiBuffer.getIntJlpt();
-						if (filter == compareTo){
-							ka[j] = kanjiBuffer.getKanji();
-							kanjiList2.add(kanjiBuffer);
-							j++;
-						}
-					}
-					break;
-
-				case 3: // jouyou 
-
-					String filterS;
-					
-					compareTo = spinner2.getSelectedItemPosition() + 1;
-
-					for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
-						kanjiBuffer = kanjiList.get(i);
-						filterS = kanjiBuffer.getJouyou();
-						if(filterS.startsWith("名")){
-							filterS = filterS.substring(1);
-						} 
-						if (Integer.parseInt(filterS) == compareTo){
-							ka[j] = kanjiBuffer.getKanji();
-							kanjiList2.add(kanjiBuffer);
-							j++;
-						}
-					}
-					break;
 				}
+				break;
+
+			case 2: // jlpt
+
+				compareTo = spinner2.getSelectedItemPosition();
+				for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
+					kanjiBuffer = kanjiList.get(i);
+					filter = kanjiBuffer.getIntJlpt();
+					if (filter == compareTo){
+						ka[j] = kanjiBuffer.getKanji();
+						kanjiList2.add(kanjiBuffer);
+						j++;
+					}
+				}
+				break;
+
+			case 3: // jouyou 
+
+				String filterS;
+
+				compareTo = spinner2.getSelectedItemPosition() + 1;
+
+				for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
+					kanjiBuffer = kanjiList.get(i);
+					filterS = kanjiBuffer.getJouyou();
+					if(filterS.startsWith("名")){
+						filterS = filterS.substring(1);
+					} 
+					if (Integer.parseInt(filterS) == compareTo){
+						ka[j] = kanjiBuffer.getKanji();
+						kanjiList2.add(kanjiBuffer);
+						j++;
+					}
+				}
+				break;
+			}
 			//}else 
-				if(spinner1.getSelectedItemPosition() == 0){ // FIXME despues de hacer esto no se puede hacer click en un kanji
+			if(spinner1.getSelectedItemPosition() == 0){ // FIXME despues de hacer esto no se puede hacer click en un kanji
 				for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
 					kanjiBuffer = kanjiList.get(i);
 					ka[j] = kanjiBuffer.getKanji();
