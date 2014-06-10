@@ -105,6 +105,8 @@ public class KanjiTestSettingsActivity extends Activity{
 
 					toAnotherActivity.putExtra("nQuestion", questions);
 					toAnotherActivity.putExtra("list", kanjiList);
+					
+					finish();
 					startActivityForResult(toAnotherActivity, 0);
 				}
 				else{

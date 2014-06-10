@@ -32,8 +32,11 @@ public class TestResultActivity extends Activity {
 	
 	View.OnClickListener buttonHandler1 = new View.OnClickListener() {
 		public void onClick(View v) {
+			finish();
 			Intent in = new Intent(getApplicationContext(), MainMenuActivity.class);
 			startActivityForResult(in, 0);
 		}
 	};
+	
+	
 }
