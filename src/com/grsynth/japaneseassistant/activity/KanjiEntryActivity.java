@@ -24,7 +24,7 @@ public class KanjiEntryActivity extends Activity{
 	ArrayList<Kanji> kanjiList;
 	ArrayList<ScoreKanji> scoreList = new ArrayList<ScoreKanji>();
 	Intent in;
-	TextView tv0, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8;
+	TextView tv0, tv1, tv2, tv3, tv4, tv5, tv6, tv7, tv8, tv9, tv10, tv11;
 	
 	@SuppressWarnings("unchecked")
 	protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +42,9 @@ public class KanjiEntryActivity extends Activity{
 		tv6 = (TextView) findViewById(R.id.radical_container);
 		tv7 = (TextView) findViewById(R.id.meaning);
 		tv8 = (TextView) findViewById(R.id.score1);
+		tv9 = (TextView) findViewById(R.id.score2);
+		tv10 = (TextView) findViewById(R.id.score3);
+		tv11 = (TextView) findViewById(R.id.score4);
 		
 		try{
 			FileInputStream finS = openFileInput("scoreKanji");
@@ -55,8 +58,7 @@ public class KanjiEntryActivity extends Activity{
 
 		}catch(Exception ex){
 			ex.printStackTrace();
-		} 
-
+		}
 
 		pos = getIntent().getExtras().getInt("position");
 		kanjiList = (ArrayList<Kanji>) getIntent().getExtras().getSerializable("list");
@@ -80,7 +82,31 @@ public class KanjiEntryActivity extends Activity{
 		tv5.setText(k.getStrokes());
 		tv6.setText(k.getRadical());
 		tv7.setText(k.getMeaning());
-		tv8.setText(""+sk.meaning);
+		
+		if (sk.meaning == -1){
+			tv8.setText("No data");
+		}
+		else{
+			tv8.setText(""+sk.meaning);
+		}
+		if (sk.kanji == -1){
+			tv9.setText("No data");
+		}
+		else{
+			tv9.setText(""+sk.kanji);
+		}
+		if (sk.onyomi == -1){
+			tv10.setText("No data");
+		}
+		else{
+			tv10.setText(""+sk.onyomi);
+		}
+		if (sk.kunyomi == -1){
+			tv11.setText("No data");
+		}
+		else{
+			tv11.setText(""+sk.kunyomi);
+		}
 	}
 	
 	View.OnClickListener buttonHandler1 = new View.OnClickListener() {

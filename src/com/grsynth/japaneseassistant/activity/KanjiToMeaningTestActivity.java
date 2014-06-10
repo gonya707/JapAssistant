@@ -107,7 +107,12 @@ public class KanjiToMeaningTestActivity extends Activity {
 				list.add((ScoreKanji) ois.readObject());
 
 				if (addPoint[i] > 0){
-					list.get(i).meaning += addPoint[i];
+					if (list.get(i).meaning == -1){
+						list.get(i).meaning += addPoint[i] + 1;
+					}
+					else{
+						list.get(i).meaning += addPoint[i];
+					}
 				}
 				else if (addPoint[i] == -1){
 					list.get(i).meaning = 0;
@@ -145,6 +150,9 @@ public class KanjiToMeaningTestActivity extends Activity {
 			if(answer == kanjiList.get(askedQuestionKanjiIndex).getMeaning()){ //right
 				r++;
 				addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+				if (addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] == 0){
+					addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+				}
 			}
 			else{	//wrong
 				w++;
@@ -176,10 +184,14 @@ public class KanjiToMeaningTestActivity extends Activity {
 
 			if(answer == kanjiList.get(askedQuestionKanjiIndex).getMeaning()){ //right
 				r++;
-				// TODO add scores
+				addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+				if (addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] == 0){
+					addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+				}
 			}
 			else{	//wrong
 				w++;
+				addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] = -1;
 			}
 
 			refreshScreen();
@@ -207,10 +219,14 @@ public class KanjiToMeaningTestActivity extends Activity {
 
 			if(answer == kanjiList.get(askedQuestionKanjiIndex).getMeaning()){ //right
 				r++;
-				// TODO add scores
+				addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+				if (addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] == 0){
+					addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+				}
 			}
 			else{	//wrong
 				w++;
+				addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] = -1;
 			}
 
 			refreshScreen();
@@ -238,10 +254,14 @@ public class KanjiToMeaningTestActivity extends Activity {
 
 			if(answer == kanjiList.get(askedQuestionKanjiIndex).getMeaning()){ //right
 				r++;
-				// TODO add scores
+				addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+				if (addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] == 0){
+					addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+				}
 			}
 			else{	//wrong
 				w++;
+				addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] = -1;
 			}
 
 			refreshScreen();
