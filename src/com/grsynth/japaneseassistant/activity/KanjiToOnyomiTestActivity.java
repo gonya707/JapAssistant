@@ -1,10 +1,19 @@
 package com.grsynth.japaneseassistant.activity;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.KeyEvent;
@@ -12,9 +21,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.grsynth.japaneseassistant.R;
 import com.grsynth.japaneseassistant.Type.Kanji;
+import com.grsynth.japaneseassistant.Type.ScoreKanji;
 
 public class KanjiToOnyomiTestActivity extends Activity {
 
@@ -28,8 +39,9 @@ public class KanjiToOnyomiTestActivity extends Activity {
 
 	int questionIndex;
 	int nQuestion;
-
+	
 	ArrayList<Kanji> kanjiList;
+	short addPoint[];
 
 	int askedQuestionKanjiIndex;
 
@@ -71,6 +83,9 @@ public class KanjiToOnyomiTestActivity extends Activity {
 		edittext.setOnKeyListener(editTextHandler);
 		button = (Button) findViewById(R.id.button);
 		button.setOnClickListener(buttonHandler);
+		
+		addPoint = new short[getResources().getInteger(R.integer.number_of_kanji)];
+
 
 	}
 
@@ -96,21 +111,25 @@ public class KanjiToOnyomiTestActivity extends Activity {
 
 	private void checkAnswer() {
 		String s = edittext.getText().toString();
-		s.replaceAll(",", "");
+		s.replaceAll("ょ", "よ");
+		s.replaceAll("ゅ", "ゆ");
+		s.replaceAll("ゃ", "や");
 		String goodAnswers[]; 
 		questionIndex++;
 		
-		
 		Kanji k = kanjiList.get(askedQuestionKanjiIndex);
-		goodAnswers = k.getOnyomi().split(" ");
+		goodAnswers = k.getOnyomi().split("、");
 		
 		if(Arrays.asList(goodAnswers).contains(edittext.getText().toString())){
 			r++;
-			// TODO add scores
+			addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+			if (addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] == 0){
+				addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] ++;
+			}
 		}
 		else{
 			w++;
-			
+			addPoint[kanjiList.get(askedQuestionKanjiIndex).getIndex()] = -1;
 		}
 		
 		edittext.setText(null);
@@ -131,8 +150,6 @@ public class KanjiToOnyomiTestActivity extends Activity {
 			startActivityForResult(in, 0);
 		}
 		
-		
-		
 	}
 	
 	void getQuestion(int q){
@@ -147,6 +164,53 @@ public class KanjiToOnyomiTestActivity extends Activity {
 		tvNQuestion.setText(questionIndex + "/" + nQuestion);
 	}
 
+	@Override
+	protected void onPause() {
+		super.onPause();
 
+		List<ScoreKanji> list = new ArrayList<ScoreKanji>();
+
+		try {
+			FileInputStream fin = openFileInput("scoreKanji");
+			ObjectInputStream ois = new ObjectInputStream(fin);
+
+			for (int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
+				list.add((ScoreKanji) ois.readObject());
+
+				if (addPoint[i] > 0){
+					if (list.get(i).onyomi == -1){
+						list.get(i).onyomi += addPoint[i] + 1;
+					}
+					else{
+						list.get(i).onyomi += addPoint[i];
+					}
+				}
+				else if (addPoint[i] == -1){
+					list.get(i).onyomi = 0;
+				}
+			}
+			ois.close();
+			
+			deleteFile("scoreKanji");
+			FileOutputStream fos = openFileOutput("scoreKanji", Context.MODE_PRIVATE);
+			ObjectOutputStream oos = new ObjectOutputStream(fos);
+			
+			for(int i = 0; i < getResources().getInteger(R.integer.number_of_kanji); i++){
+				ScoreKanji sk = list.get(i);
+				oos.writeObject(sk);
+			}
+			fos.close();
+
+		} catch (FileNotFoundException e) {
+			Toast.makeText(getApplicationContext(), "scoreKanji file not created. Unable to save your score.", Toast.LENGTH_SHORT ).show();
+			e.printStackTrace();
+		} catch (StreamCorruptedException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+		} 
+	}
 
 }

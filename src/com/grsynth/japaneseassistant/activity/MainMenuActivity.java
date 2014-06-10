@@ -29,7 +29,7 @@ public class MainMenuActivity extends Activity {
 		b4.setOnClickListener(buttonHandler4);
 
 		b1.setText("Vocabulary");
-		b2.setText("Kanji");
+		b2.setText("Browse");
 		b3.setText("Test");
 		b4.setText("Settings menu");
 		

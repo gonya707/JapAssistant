@@ -43,8 +43,8 @@ public class SettingsActivity extends Activity {
 		tv.setText("");
 		
 		b1.setText("Generate settings file");
-		b2.setText("Generate kanji file");
-		b3.setText("Generate score file");
+		b2.setText("Reset kanji file");
+		b3.setText("Reset score file");
 
 	}
 	
@@ -79,7 +79,7 @@ public class SettingsActivity extends Activity {
 				} catch (IOException e1) {
 					e1.printStackTrace();
 				}
-				tv.append(" hecho");
+				tv.append(" hecho\nThis does nothing though ( ͡° ͜ʖ ͡°)");
 			} catch (ClassNotFoundException e) {
 				e.printStackTrace();
 			}
